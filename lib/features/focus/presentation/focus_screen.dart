@@ -14,6 +14,7 @@ import '../../../core/design_system/widgets/viora_progress_ring.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_surface.dart';
 import 'providers/focus_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 String _fmtElapsed(Duration d) {
   final h = d.inHours.toString().padLeft(2, '0');
@@ -43,7 +44,7 @@ class FocusScreen extends ConsumerWidget {
             data: (sessions) {
               if (sessions.isEmpty) {
                 return const VioraEmptyState(
-                  icon: Icons.center_focus_strong_rounded,
+                  icon: IconsaxPlusBroken.scan,
                   title: 'No sessions yet',
                   message: 'Start your first focus session above.',
                 );
@@ -128,7 +129,7 @@ class _StartFocusCardState extends ConsumerState<_StartFocusCard> {
           const SizedBox(height: VioraSpacing.xl),
           VioraButton(
             label: 'Start focus session',
-            icon: Icons.play_arrow_rounded,
+            icon: IconsaxPlusBold.play,
             expand: true,
             onPressed: () {
               final title = _title.text.trim();
@@ -167,14 +168,14 @@ class _ActiveFocusCard extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               VioraIconButton(
-                icon: session.running ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                icon: session.running ? IconsaxPlusBold.pause : IconsaxPlusBold.play,
                 size: 56,
                 tooltip: session.running ? 'Pause' : 'Resume',
                 onPressed: () => ref.read(focusSessionProvider.notifier).togglePause(),
               ),
               const SizedBox(width: VioraSpacing.lg),
               VioraIconButton(
-                icon: Icons.stop_rounded,
+                icon: IconsaxPlusBold.stop_circle,
                 size: 56,
                 tooltip: 'Stop',
                 onPressed: () => ref.read(focusSessionProvider.notifier).stop(),

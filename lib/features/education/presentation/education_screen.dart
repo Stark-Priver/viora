@@ -12,6 +12,7 @@ import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_stat.dart';
 import 'providers/education_providers.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class EducationScreen extends ConsumerWidget {
   const EducationScreen({super.key});
@@ -21,7 +22,7 @@ class EducationScreen extends ConsumerWidget {
     final sessionsAsync = ref.watch(studySessionsProvider);
     final actions = ref.read(educationActionsProvider);
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'Log study session', icon: Icons.school_outlined, accentColor: context.neu.domainStudy, builder: (_) => const _StudySessionForm());
+    void openAddForm() => showVioraFormSheet(context: context, title: 'Log study session', icon: IconsaxPlusBroken.teacher, accentColor: context.neu.domainStudy, builder: (_) => const _StudySessionForm());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -31,7 +32,7 @@ class EducationScreen extends ConsumerWidget {
           VioraSection(
             title: 'Education',
             subtitle: 'Study time, tracked',
-            trailing: VioraButton(label: 'Log', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Log', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           sessionsAsync.when(
             data: (sessions) {
@@ -52,7 +53,7 @@ class EducationScreen extends ConsumerWidget {
                             label: 'This week',
                             value: weekMinutes.toDouble(),
                             formatter: (v) => '${v ~/ 60}h ${(v % 60).round()}m',
-                            icon: Icons.school_outlined,
+                            icon: IconsaxPlusBroken.teacher,
                             metricSize: 22,
                           ),
                         ),
@@ -61,7 +62,7 @@ class EducationScreen extends ConsumerWidget {
                             label: 'All time',
                             value: totalMinutes.toDouble(),
                             formatter: (v) => '${v ~/ 60}h ${(v % 60).round()}m',
-                            icon: Icons.history_edu_outlined,
+                            icon: IconsaxPlusBroken.book_saved,
                             metricSize: 22,
                           ),
                         ),
@@ -70,7 +71,7 @@ class EducationScreen extends ConsumerWidget {
                             label: 'Sessions',
                             value: sessions.length.toDouble(),
                             formatter: (v) => v.toInt().toString(),
-                            icon: Icons.event_note_outlined,
+                            icon: IconsaxPlusBroken.calendar_1,
                             metricSize: 22,
                           ),
                         ),
@@ -80,7 +81,7 @@ class EducationScreen extends ConsumerWidget {
                   const SizedBox(height: VioraSpacing.xl2),
                   if (sessions.isEmpty)
                     VioraEmptyState(
-                      icon: Icons.school_outlined,
+                      icon: IconsaxPlusBroken.teacher,
                       title: 'No study sessions yet',
                       message: 'Log time spent studying a subject.',
                       actionLabel: 'Log session',
@@ -108,7 +109,7 @@ class EducationScreen extends ConsumerWidget {
                                 ),
                               ),
                               Text('${s.minutes}m', style: Theme.of(context).textTheme.titleMedium),
-                              VioraIconButton(icon: Icons.delete_outline_rounded, size: 32, tooltip: 'Delete', onPressed: () => actions.delete(s.id)),
+                              VioraIconButton(icon: IconsaxPlusBroken.trash, size: 32, tooltip: 'Delete', onPressed: () => actions.delete(s.id)),
                             ],
                           ),
                         ),
@@ -159,7 +160,7 @@ class _StudySessionFormState extends ConsumerState<_StudySessionForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Log session',
-          icon: Icons.school_outlined,
+          icon: IconsaxPlusBroken.teacher,
           expand: true,
           onPressed: () {
             final subject = _subject.text.trim();

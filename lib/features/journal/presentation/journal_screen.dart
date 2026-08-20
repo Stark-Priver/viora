@@ -9,6 +9,7 @@ import '../../../core/design_system/widgets/viora_input.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_toast.dart';
 import 'providers/journal_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class JournalScreen extends ConsumerStatefulWidget {
   const JournalScreen({super.key});
@@ -71,12 +72,12 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 VioraIconButton(
-                  icon: Icons.chevron_left_rounded,
+                  icon: IconsaxPlusBroken.arrow_left_2,
                   onPressed: () => ref.read(journalSelectedDayProvider.notifier).state = day.subtract(const Duration(days: 1)),
                 ),
                 Text(DateFormat('EEEE, d MMMM').format(day), style: Theme.of(context).textTheme.titleMedium),
                 VioraIconButton(
-                  icon: Icons.chevron_right_rounded,
+                  icon: IconsaxPlusBroken.arrow_right_2,
                   onPressed: () => ref.read(journalSelectedDayProvider.notifier).state = day.add(const Duration(days: 1)),
                 ),
               ],
@@ -95,7 +96,7 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
           const SizedBox(height: VioraSpacing.xl2),
           VioraButton(
             label: 'Save entry',
-            icon: Icons.check_rounded,
+            icon: IconsaxPlusBold.check,
             expand: true,
             onPressed: () {
               ref.read(journalActionsProvider).save(
@@ -107,7 +108,7 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
                     gratitude: _gratitude.text.trim().isEmpty ? null : _gratitude.text.trim(),
                     priorityTomorrow: _priority.text.trim().isEmpty ? null : _priority.text.trim(),
                   );
-              VioraToast.show(context, 'Entry saved.', icon: Icons.check_circle_outline_rounded);
+              VioraToast.show(context, 'Entry saved.', icon: IconsaxPlusBroken.tick_circle);
             },
           ),
         ],

@@ -5,6 +5,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_section.dart';
 import '../../../habits/presentation/providers/habits_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Today's habit checklist, condensed to a single row of dots — the full
 /// 7-day history lives on the Habits screen; Home only needs "did I do
@@ -82,7 +83,7 @@ class _HabitDot extends StatelessWidget {
                 color: done ? neu.success : neu.surfaceSunken,
                 shape: BoxShape.circle,
               ),
-              child: done ? const Icon(Icons.check_rounded, size: 17, color: Colors.white) : null,
+              child: done ? const Icon(IconsaxPlusBold.check, size: 17, color: Colors.white) : null,
             ),
           ),
           const SizedBox(height: VioraSpacing.xs),

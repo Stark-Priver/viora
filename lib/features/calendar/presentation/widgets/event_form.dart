@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/calendar_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class EventForm extends ConsumerStatefulWidget {
   const EventForm({super.key, required this.day});
@@ -52,7 +53,7 @@ class _EventFormState extends ConsumerState<EventForm> {
                 children: [
                   Text('Start', style: Theme.of(context).textTheme.labelMedium),
                   const SizedBox(height: VioraSpacing.sm),
-                  VioraChip(label: _start.format(context), icon: Icons.schedule_rounded, onTap: () => _pickTime(true)),
+                  VioraChip(label: _start.format(context), icon: IconsaxPlusBroken.clock, onTap: () => _pickTime(true)),
                 ],
               ),
             ),
@@ -63,7 +64,7 @@ class _EventFormState extends ConsumerState<EventForm> {
                 children: [
                   Text('End', style: Theme.of(context).textTheme.labelMedium),
                   const SizedBox(height: VioraSpacing.sm),
-                  VioraChip(label: _end.format(context), icon: Icons.schedule_rounded, onTap: () => _pickTime(false)),
+                  VioraChip(label: _end.format(context), icon: IconsaxPlusBroken.clock, onTap: () => _pickTime(false)),
                 ],
               ),
             ),
@@ -92,7 +93,7 @@ class _EventFormState extends ConsumerState<EventForm> {
             for (final m in _reminderOptions)
               VioraChip(
                 label: m == null ? 'None' : '$m min before',
-                icon: m == null ? null : Icons.notifications_none_rounded,
+                icon: m == null ? null : IconsaxPlusBroken.notification,
                 selected: _reminderMinutesBefore == m,
                 onTap: () => setState(() => _reminderMinutesBefore = m),
               ),
@@ -101,7 +102,7 @@ class _EventFormState extends ConsumerState<EventForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add event',
-          icon: Icons.calendar_today_rounded,
+          icon: IconsaxPlusBroken.calendar,
           expand: true,
           onPressed: () {
             final title = _title.text.trim();

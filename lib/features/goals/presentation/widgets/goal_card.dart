@@ -6,6 +6,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_icon_button.dart';
 import '../../../../core/design_system/widgets/viora_progress_bar.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class GoalCard extends StatelessWidget {
   const GoalCard({super.key, required this.goal, required this.onLogProgress, required this.onDelete});
@@ -31,9 +32,9 @@ class GoalCard extends StatelessWidget {
               Expanded(
                 child: Text(goal.title, style: textTheme.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis),
               ),
-              VioraIconButton(icon: Icons.add_rounded, size: 34, tooltip: 'Log progress', onPressed: onLogProgress),
+              VioraIconButton(icon: IconsaxPlusBold.add, size: 34, tooltip: 'Log progress', onPressed: onLogProgress),
               const SizedBox(width: VioraSpacing.xs),
-              VioraIconButton(icon: Icons.delete_outline_rounded, size: 34, tooltip: 'Delete', onPressed: onDelete),
+              VioraIconButton(icon: IconsaxPlusBroken.trash, size: 34, tooltip: 'Delete', onPressed: onDelete),
             ],
           ),
           const SizedBox(height: VioraSpacing.xs),

@@ -5,6 +5,7 @@ import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_section.dart';
 import '../../../../core/design_system/widgets/viora_stat.dart';
 import '../../domain/home_dashboard_data.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class MoneyCard extends StatelessWidget {
   const MoneyCard({super.key, required this.money});
@@ -29,7 +30,7 @@ class MoneyCard extends StatelessWidget {
                   label: 'Income',
                   value: money.income,
                   formatter: currency,
-                  icon: Icons.south_west_rounded,
+                  icon: IconsaxPlusBroken.trend_down,
                   iconColor: neu.success,
                   metricSize: 22,
                 ),
@@ -39,7 +40,7 @@ class MoneyCard extends StatelessWidget {
                   label: 'Spent',
                   value: money.spent,
                   formatter: currency,
-                  icon: Icons.north_east_rounded,
+                  icon: IconsaxPlusBroken.trend_up,
                   iconColor: neu.danger,
                   metricSize: 22,
                 ),
@@ -49,7 +50,7 @@ class MoneyCard extends StatelessWidget {
                   label: 'Net',
                   value: money.net,
                   formatter: currency,
-                  icon: Icons.account_balance_wallet_outlined,
+                  icon: IconsaxPlusBroken.wallet,
                   iconColor: neu.brand,
                   metricSize: 22,
                 ),

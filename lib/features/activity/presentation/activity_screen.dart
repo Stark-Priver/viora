@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/design_system/widgets/viora_info_screen.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class ActivityScreen extends StatelessWidget {
   const ActivityScreen({super.key});
@@ -9,7 +10,7 @@ class ActivityScreen extends StatelessWidget {
     return const VioraInfoScreen(
       title: 'Activity',
       subtitle: 'Screen time and app usage',
-      icon: Icons.bar_chart_rounded,
+      icon: IconsaxPlusBold.chart_2,
       headline: 'Digital activity tracking needs a native Android module',
       body: 'Reading app usage and screen time requires the Android UsageStatsManager API, which needs a '
           'privileged runtime permission (PACKAGE_USAGE_STATS) granted from system settings, not the normal '

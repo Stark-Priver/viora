@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/habits_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HabitForm extends ConsumerStatefulWidget {
   const HabitForm({super.key});
@@ -44,7 +45,7 @@ class _HabitFormState extends ConsumerState<HabitForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add habit',
-          icon: Icons.repeat_rounded,
+          icon: IconsaxPlusBroken.repeat,
           expand: true,
           onPressed: () {
             final title = _title.text.trim();

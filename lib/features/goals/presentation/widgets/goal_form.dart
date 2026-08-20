@@ -4,6 +4,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/goals_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class GoalForm extends ConsumerStatefulWidget {
   const GoalForm({super.key});
@@ -43,7 +44,7 @@ class _GoalFormState extends ConsumerState<GoalForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add goal',
-          icon: Icons.flag_outlined,
+          icon: IconsaxPlusBroken.flag,
           expand: true,
           onPressed: () {
             final title = _title.text.trim();
@@ -86,7 +87,7 @@ class _LogProgressFormState extends ConsumerState<LogProgressForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Log progress',
-          icon: Icons.add_rounded,
+          icon: IconsaxPlusBold.add,
           expand: true,
           onPressed: () {
             final amount = double.tryParse(_amount.text.trim());

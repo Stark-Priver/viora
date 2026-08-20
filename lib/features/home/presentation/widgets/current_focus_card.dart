@@ -8,6 +8,7 @@ import '../../../../core/design_system/widgets/viora_icon_button.dart';
 import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../focus/presentation/providers/focus_providers.dart';
 import '../../domain/home_dashboard_data.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 String _fmtElapsed(Duration d) {
   final h = d.inHours.toString().padLeft(2, '0');
@@ -41,7 +42,7 @@ class CurrentFocusCard extends StatelessWidget {
       return Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.schedule_rounded, size: 15, color: neu.textTertiary),
+          Icon(IconsaxPlusBroken.clock, size: 15, color: neu.textTertiary),
           const SizedBox(width: VioraSpacing.xs),
           Flexible(
             child: Text('${nextEvent!.time} · ${nextEvent!.title}', style: textTheme.bodySmall, overflow: TextOverflow.ellipsis),
@@ -60,7 +61,7 @@ class CurrentFocusCard extends StatelessWidget {
             const SizedBox(height: VioraSpacing.sm),
             Text('Nothing running right now', style: textTheme.headlineSmall),
             const SizedBox(height: VioraSpacing.lg),
-            VioraButton(label: 'Start focus session', icon: Icons.play_arrow_rounded, onPressed: onStartFocus),
+            VioraButton(label: 'Start focus session', icon: IconsaxPlusBold.play, onPressed: onStartFocus),
             if (nextEvent != null) ...[const SizedBox(height: VioraSpacing.lg), nextEventLine()],
           ],
         ),
@@ -72,6 +73,7 @@ class CurrentFocusCard extends StatelessWidget {
     return VioraCard(
       elevation: VioraElevation.raisedHigh,
       orbColors: [neu.success, neu.brand],
+      animate: false,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -97,12 +99,12 @@ class CurrentFocusCard extends StatelessWidget {
           Row(
             children: [
               VioraIconButton(
-                icon: focus.running ? Icons.pause_rounded : Icons.play_arrow_rounded,
+                icon: focus.running ? IconsaxPlusBold.pause : IconsaxPlusBold.play,
                 tooltip: focus.running ? 'Pause' : 'Resume',
                 onPressed: onTogglePause,
               ),
               const SizedBox(width: VioraSpacing.sm),
-              VioraIconButton(icon: Icons.stop_rounded, tooltip: 'Stop', onPressed: onStop),
+              VioraIconButton(icon: IconsaxPlusBold.stop_circle, tooltip: 'Stop', onPressed: onStop),
               if (nextEvent != null) ...[
                 const SizedBox(width: VioraSpacing.md),
                 Expanded(child: Align(alignment: Alignment.centerRight, child: nextEventLine())),

@@ -6,6 +6,7 @@ import '../widgets/viora_icon_button.dart';
 import '../widgets/viora_toast.dart';
 import 'viora_nav.dart';
 import 'viora_wordmark.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Responsive application shell: persistent grouped sidebar on desktop, an
 /// icon rail on tablet, and a bottom nav bar on mobile — all driven by the
@@ -32,7 +33,7 @@ class VioraAppShell extends StatelessWidget {
 
   void _select(BuildContext context, VioraNavItem item) {
     if (!item.enabled) {
-      VioraToast.show(context, '${item.label} is on the way — Phase 2+ of the build.', icon: Icons.hourglass_top_rounded);
+      VioraToast.show(context, '${item.label} is on the way — Phase 2+ of the build.', icon: IconsaxPlusBroken.timer_start);
       return;
     }
     onNavigate(item.path!);
@@ -65,13 +66,13 @@ class _TopBarActions extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         VioraIconButton(
-          icon: Icons.search_rounded,
+          icon: IconsaxPlusBroken.search_normal,
           tooltip: 'Search (Ctrl+K)',
           onPressed: () => VioraToast.show(context, 'Universal search — coming soon.'),
         ),
         const SizedBox(width: VioraSpacing.sm),
         VioraIconButton(
-          icon: themeMode == ThemeMode.dark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
+          icon: themeMode == ThemeMode.dark ? IconsaxPlusBold.moon : IconsaxPlusBroken.sun_1,
           tooltip: 'Toggle theme',
           onPressed: onToggleTheme,
         ),

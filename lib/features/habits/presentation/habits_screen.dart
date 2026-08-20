@@ -11,6 +11,7 @@ import 'providers/habits_providers.dart';
 import 'widgets/habit_card.dart';
 import 'widgets/habit_form.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HabitsScreen extends ConsumerWidget {
   const HabitsScreen({super.key});
@@ -21,7 +22,7 @@ class HabitsScreen extends ConsumerWidget {
     final logsAsync = ref.watch(habitLogsStreamProvider);
     final actions = ref.read(habitsActionsProvider);
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'New habit', icon: Icons.repeat_rounded, accentColor: context.neu.domainHealth, builder: (_) => const HabitForm());
+    void openAddForm() => showVioraFormSheet(context: context, title: 'New habit', icon: IconsaxPlusBroken.repeat, accentColor: context.neu.domainHealth, builder: (_) => const HabitForm());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -31,14 +32,14 @@ class HabitsScreen extends ConsumerWidget {
           VioraSection(
             title: 'Habits',
             subtitle: 'Consistency over streaks',
-            trailing: VioraButton(label: 'Add', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Add', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           const SizedBox(height: VioraSpacing.sm),
           habitsAsync.when(
             data: (habits) {
               if (habits.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.repeat_rounded,
+                  icon: IconsaxPlusBroken.repeat,
                   title: 'No habits yet',
                   message: 'Track something you want to do consistently — exercise, reading, water.',
                   actionLabel: 'Add habit',
@@ -57,7 +58,7 @@ class HabitsScreen extends ConsumerWidget {
                       label: 'Done today',
                       value: doneToday.toDouble(),
                       formatter: (v) => '${v.toInt()} / ${habits.length}',
-                      icon: Icons.check_circle_outline_rounded,
+                      icon: IconsaxPlusBroken.tick_circle,
                       metricSize: 26,
                     ),
                   ),

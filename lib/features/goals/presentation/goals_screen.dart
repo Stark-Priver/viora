@@ -9,6 +9,7 @@ import 'providers/goals_providers.dart';
 import 'widgets/goal_card.dart';
 import 'widgets/goal_form.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class GoalsScreen extends ConsumerWidget {
   const GoalsScreen({super.key});
@@ -18,7 +19,7 @@ class GoalsScreen extends ConsumerWidget {
     final goalsAsync = ref.watch(goalsStreamProvider);
     final actions = ref.read(goalsActionsProvider);
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'New goal', icon: Icons.flag_outlined, accentColor: context.neu.brand, builder: (_) => const GoalForm());
+    void openAddForm() => showVioraFormSheet(context: context, title: 'New goal', icon: IconsaxPlusBroken.flag, accentColor: context.neu.brand, builder: (_) => const GoalForm());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -28,14 +29,14 @@ class GoalsScreen extends ConsumerWidget {
           VioraSection(
             title: 'Goals',
             subtitle: 'Vision, tracked in numbers',
-            trailing: VioraButton(label: 'Add', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Add', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           const SizedBox(height: VioraSpacing.sm),
           goalsAsync.when(
             data: (goals) {
               if (goals.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.flag_outlined,
+                  icon: IconsaxPlusBroken.flag,
                   title: 'No goals yet',
                   message: 'Set a target and start logging progress toward it.',
                   actionLabel: 'Add goal',
@@ -57,7 +58,7 @@ class GoalsScreen extends ConsumerWidget {
                             onLogProgress: () => showVioraFormSheet(
                               context: context,
                               title: 'Log progress · ${goal.title}',
-                              icon: Icons.trending_up_rounded,
+                              icon: IconsaxPlusBold.trend_up,
                               accentColor: context.neu.brand,
                               builder: (_) => LogProgressForm(goalId: goal.id),
                             ),

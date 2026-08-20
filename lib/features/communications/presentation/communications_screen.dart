@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/design_system/widgets/viora_info_screen.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class CommunicationsScreen extends StatelessWidget {
   const CommunicationsScreen({super.key});
@@ -9,7 +10,7 @@ class CommunicationsScreen extends StatelessWidget {
     return const VioraInfoScreen(
       title: 'Communications',
       subtitle: 'Calls, messages, notification load',
-      icon: Icons.forum_outlined,
+      icon: IconsaxPlusBroken.messages,
       headline: 'Call and notification metadata need explicit device permissions',
       body: 'Call-log metadata (READ_CALL_LOG) and notification counts (a Notification Listener Service) are both '
           'privileged Android permissions with their own consent screens — and, per the product\'s privacy rules, '

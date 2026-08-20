@@ -12,6 +12,7 @@ import 'providers/projects_providers.dart';
 import 'widgets/project_card.dart';
 import 'widgets/project_form.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 const _statusCycle = [
   ProjectStatuses.active,
@@ -28,7 +29,7 @@ class ProjectsScreen extends ConsumerWidget {
     final projectsAsync = ref.watch(projectsStreamProvider);
     final actions = ref.read(projectsActionsProvider);
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'New project', icon: Icons.folder_open_rounded, accentColor: context.neu.domainBusiness, builder: (_) => const ProjectForm());
+    void openAddForm() => showVioraFormSheet(context: context, title: 'New project', icon: IconsaxPlusBroken.folder_open, accentColor: context.neu.domainBusiness, builder: (_) => const ProjectForm());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -38,14 +39,14 @@ class ProjectsScreen extends ConsumerWidget {
           VioraSection(
             title: 'Projects',
             subtitle: 'Personal, freelance, and business work',
-            trailing: VioraButton(label: 'Add', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Add', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           const SizedBox(height: VioraSpacing.sm),
           projectsAsync.when(
             data: (rows) {
               if (rows.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.folder_open_rounded,
+                  icon: IconsaxPlusBroken.folder_open,
                   title: 'No projects yet',
                   message: 'Group related tasks and track budget/spend under a project.',
                   actionLabel: 'Add project',
@@ -70,7 +71,7 @@ class ProjectsScreen extends ConsumerWidget {
                                 label: 'Total',
                                 value: rows.length.toDouble(),
                                 formatter: (v) => v.toInt().toString(),
-                                icon: Icons.folder_open_rounded,
+                                icon: IconsaxPlusBroken.folder_open,
                                 metricSize: 24,
                               ),
                             ),
@@ -79,7 +80,7 @@ class ProjectsScreen extends ConsumerWidget {
                                 label: 'Active',
                                 value: activeCount.toDouble(),
                                 formatter: (v) => v.toInt().toString(),
-                                icon: Icons.bolt_rounded,
+                                icon: IconsaxPlusBroken.flash,
                                 iconColor: context.neu.info,
                                 metricSize: 24,
                               ),
@@ -89,7 +90,7 @@ class ProjectsScreen extends ConsumerWidget {
                                 label: 'Completed',
                                 value: completedCount.toDouble(),
                                 formatter: (v) => v.toInt().toString(),
-                                icon: Icons.check_circle_outline_rounded,
+                                icon: IconsaxPlusBroken.tick_circle,
                                 iconColor: context.neu.success,
                                 metricSize: 24,
                               ),

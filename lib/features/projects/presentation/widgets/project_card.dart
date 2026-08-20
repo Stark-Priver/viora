@@ -7,6 +7,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_icon_button.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 Color _statusColor(VioraNeuTheme neu, String status) {
   switch (status) {
@@ -41,7 +42,7 @@ class ProjectCard extends StatelessWidget {
           Row(
             children: [
               Expanded(child: Text(project.name, style: textTheme.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis)),
-              VioraIconButton(icon: Icons.delete_outline_rounded, size: 34, tooltip: 'Delete', onPressed: onDelete),
+              VioraIconButton(icon: IconsaxPlusBroken.trash, size: 34, tooltip: 'Delete', onPressed: onDelete),
             ],
           ),
           if (project.description != null) ...[
@@ -54,7 +55,7 @@ class ProjectCard extends StatelessWidget {
               VioraChip(label: project.status.replaceAll('_', ' '), color: _statusColor(neu, project.status), onTap: onCycleStatus),
               if (project.budget != null) ...[
                 const SizedBox(width: VioraSpacing.sm),
-                VioraChip(label: '${fmt.format(project.budget)} budget', icon: Icons.account_balance_wallet_outlined),
+                VioraChip(label: '${fmt.format(project.budget)} budget', icon: IconsaxPlusBroken.wallet),
               ],
             ],
           ),

@@ -19,6 +19,7 @@ import 'widgets/life_snapshot_card.dart';
 import 'widgets/today_tasks_card.dart';
 import 'widgets/habits_mini_row.dart';
 import 'widgets/goals_row.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HomeDashboardScreen extends ConsumerWidget {
   const HomeDashboardScreen({super.key});
@@ -29,8 +30,8 @@ class HomeDashboardScreen extends ConsumerWidget {
     final session = ref.watch(focusSessionProvider);
     final focusNotifier = ref.read(focusSessionProvider.notifier);
 
-    void openAddTask() => showVioraFormSheet(context: context, title: 'New task', icon: Icons.check_circle_outline_rounded, accentColor: context.neu.domainWork, builder: (_) => const TaskForm());
-    void openAddExpense() => showVioraFormSheet(context: context, title: 'New transaction', icon: Icons.receipt_long_outlined, accentColor: context.neu.domainFinance, builder: (_) => const TransactionForm());
+    void openAddTask() => showVioraFormSheet(context: context, title: 'New task', icon: IconsaxPlusBroken.tick_circle, accentColor: context.neu.domainWork, builder: (_) => const TaskForm());
+    void openAddExpense() => showVioraFormSheet(context: context, title: 'New transaction', icon: IconsaxPlusBroken.receipt_item, accentColor: context.neu.domainFinance, builder: (_) => const TransactionForm());
 
     return LayoutBuilder(
       builder: (context, constraints) {

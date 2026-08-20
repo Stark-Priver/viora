@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import '../theme/viora_neu_theme.dart';
 import '../tokens/spacing.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Lightweight, on-brand snackbar wrapper — the only motion-triggered
 /// surface in the system that's allowed to float above content.
 class VioraToast {
   VioraToast._();
 
-  static void show(BuildContext context, String message, {IconData icon = Icons.info_outline_rounded}) {
+  static void show(BuildContext context, String message, {IconData icon = IconsaxPlusBroken.info_circle}) {
     final neu = context.neu;
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(

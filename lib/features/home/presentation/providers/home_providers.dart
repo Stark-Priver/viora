@@ -11,6 +11,7 @@ import '../../../money/presentation/providers/money_providers.dart';
 import '../../../tasks/presentation/providers/tasks_providers.dart';
 import '../../../focus/presentation/providers/focus_providers.dart';
 import '../../domain/home_dashboard_data.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 bool _isToday(DateTime d) {
   final now = DateTime.now();
@@ -19,15 +20,15 @@ bool _isToday(DateTime d) {
 
 (String, Color, IconData) _domainVisuals(String domain) {
   return switch (domain) {
-    LifeDomains.work => ('Work', VioraColors.domainWork, Icons.work_outline_rounded),
-    LifeDomains.study => ('Study', VioraColors.domainStudy, Icons.school_outlined),
-    LifeDomains.business => ('Business', VioraColors.domainBusiness, Icons.storefront_outlined),
-    LifeDomains.health => ('Health', VioraColors.domainHealth, Icons.favorite_border_rounded),
-    LifeDomains.finance => ('Finance', VioraColors.domainFinance, Icons.account_balance_wallet_outlined),
-    LifeDomains.social => ('Social', VioraColors.domainSocial, Icons.groups_outlined),
-    LifeDomains.transport => ('Transport', VioraColors.domainTransport, Icons.two_wheeler_rounded),
-    LifeDomains.project => ('Project', VioraColors.domainBusiness, Icons.folder_open_rounded),
-    _ => ('Personal', VioraColors.domainScreen, Icons.person_outline_rounded),
+    LifeDomains.work => ('Work', VioraColors.domainWork, IconsaxPlusBroken.briefcase),
+    LifeDomains.study => ('Study', VioraColors.domainStudy, IconsaxPlusBroken.teacher),
+    LifeDomains.business => ('Business', VioraColors.domainBusiness, IconsaxPlusBroken.shop),
+    LifeDomains.health => ('Health', VioraColors.domainHealth, IconsaxPlusBroken.heart),
+    LifeDomains.finance => ('Finance', VioraColors.domainFinance, IconsaxPlusBroken.wallet),
+    LifeDomains.social => ('Social', VioraColors.domainSocial, IconsaxPlusBroken.people),
+    LifeDomains.transport => ('Transport', VioraColors.domainTransport, IconsaxPlusBroken.car),
+    LifeDomains.project => ('Project', VioraColors.domainBusiness, IconsaxPlusBroken.folder_open),
+    _ => ('Personal', VioraColors.domainScreen, IconsaxPlusBroken.user),
   };
 }
 
@@ -93,7 +94,7 @@ final homeDashboardProvider = Provider.autoDispose<HomeDashboardData>((ref) {
       DashboardAlert(
         message: overdueTasks == 1 ? '1 task is overdue.' : '$overdueTasks tasks are overdue.',
         severity: AlertSeverity.warning,
-        icon: Icons.event_busy_rounded,
+        icon: IconsaxPlusBroken.calendar_remove,
       ),
   ];
 

@@ -3,16 +3,17 @@ import 'package:intl/intl.dart';
 import '../../../../core/design_system/theme/viora_neu_theme.dart';
 import '../../../../core/design_system/tokens/spacing.dart';
 import '../../domain/timeline_entry.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 (IconData, Color) _iconAndColor(VioraNeuTheme neu, TimelineKind kind) {
   return switch (kind) {
-    TimelineKind.task => (Icons.check_circle_outline_rounded, neu.success),
-    TimelineKind.focus => (Icons.center_focus_strong_rounded, neu.domainWork),
-    TimelineKind.transactionIncome => (Icons.south_west_rounded, neu.success),
-    TimelineKind.transactionExpense => (Icons.north_east_rounded, neu.domainFinance),
-    TimelineKind.habit => (Icons.repeat_rounded, neu.domainHealth),
-    TimelineKind.journal => (Icons.menu_book_outlined, neu.domainStudy),
-    TimelineKind.calendarEvent => (Icons.event_outlined, neu.brand),
+    TimelineKind.task => (IconsaxPlusBroken.tick_circle, neu.success),
+    TimelineKind.focus => (IconsaxPlusBroken.scan, neu.domainWork),
+    TimelineKind.transactionIncome => (IconsaxPlusBroken.trend_down, neu.success),
+    TimelineKind.transactionExpense => (IconsaxPlusBroken.trend_up, neu.domainFinance),
+    TimelineKind.habit => (IconsaxPlusBroken.repeat, neu.domainHealth),
+    TimelineKind.journal => (IconsaxPlusBroken.book_1, neu.domainStudy),
+    TimelineKind.calendarEvent => (IconsaxPlusBroken.calendar, neu.brand),
   };
 }
 

@@ -10,6 +10,7 @@ import '../../../../core/design_system/widgets/viora_input.dart';
 import '../../../../core/design_system/widgets/viora_toast.dart';
 import '../../../../core/sync/sync_controller.dart';
 import '../../../../core/sync/sync_models.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class SyncSettingsCard extends ConsumerWidget {
   const SyncSettingsCard({super.key});
@@ -38,9 +39,9 @@ class SyncSettingsCard extends ConsumerWidget {
                 VioraChip(
                   label: backend.label,
                   icon: switch (backend) {
-                    SyncBackend.local => Icons.smartphone_rounded,
-                    SyncBackend.googleDrive => Icons.cloud_outlined,
-                    SyncBackend.supabase => Icons.storage_rounded,
+                    SyncBackend.local => IconsaxPlusBroken.mobile,
+                    SyncBackend.googleDrive => IconsaxPlusBroken.cloud,
+                    SyncBackend.supabase => IconsaxPlusBroken.data,
                   },
                   selected: status.backend == backend,
                   onTap: () => ref.read(syncControllerProvider.notifier).selectBackend(backend),
@@ -71,7 +72,7 @@ class _LocalPanel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(Icons.lock_outline_rounded, size: 16, color: neu.textTertiary),
+        Icon(IconsaxPlusBroken.lock, size: 16, color: neu.textTertiary),
         const SizedBox(width: VioraSpacing.sm),
         Expanded(
           child: Text(
@@ -94,7 +95,7 @@ class _NotConfiguredNotice extends StatelessWidget {
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Icon(Icons.info_outline_rounded, size: 16, color: neu.warning),
+        Icon(IconsaxPlusBroken.info_circle, size: 16, color: neu.warning),
         const SizedBox(width: VioraSpacing.sm),
         Expanded(child: Text(message, style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary))),
       ],
@@ -120,7 +121,7 @@ class _SyncedActions extends ConsumerWidget {
       children: [
         Row(
           children: [
-            Icon(Icons.check_circle_outline_rounded, size: 16, color: neu.success),
+            Icon(IconsaxPlusBroken.tick_circle, size: 16, color: neu.success),
             const SizedBox(width: VioraSpacing.sm),
             Expanded(
               child: Text(
@@ -142,13 +143,13 @@ class _SyncedActions extends ConsumerWidget {
             Expanded(
               child: VioraButton(
                 label: 'Back up now',
-                icon: Icons.cloud_upload_outlined,
+                icon: IconsaxPlusBroken.export,
                 expand: true,
                 onPressed: working
                     ? null
                     : () async {
                         await notifier.backupNow();
-                        if (context.mounted) VioraToast.show(context, 'Backup complete', icon: Icons.cloud_done_outlined);
+                        if (context.mounted) VioraToast.show(context, 'Backup complete', icon: IconsaxPlusBroken.cloud_notif);
                       },
               ),
             ),
@@ -156,7 +157,7 @@ class _SyncedActions extends ConsumerWidget {
             Expanded(
               child: VioraButton(
                 label: 'Restore',
-                icon: Icons.cloud_download_outlined,
+                icon: IconsaxPlusBroken.import,
                 variant: VioraButtonVariant.secondary,
                 expand: true,
                 onPressed: working ? null : () => _confirmRestore(context, notifier),
@@ -187,7 +188,7 @@ class _SyncedActions extends ConsumerWidget {
     if (confirmed != true) return;
     await notifier.restoreNow();
     if (context.mounted) {
-      VioraToast.show(context, 'Backup downloaded — restart Viora to apply it', icon: Icons.restart_alt_rounded);
+      VioraToast.show(context, 'Backup downloaded — restart Viora to apply it', icon: IconsaxPlusBroken.refresh);
     }
   }
 }
@@ -221,7 +222,7 @@ class _GoogleDrivePanel extends ConsumerWidget {
 
     return VioraButton(
       label: working ? 'Signing in…' : 'Sign in with Google',
-      icon: Icons.login_rounded,
+      icon: IconsaxPlusBroken.login,
       expand: true,
       onPressed: working ? null : notifier.signInGoogle,
     );
@@ -305,7 +306,7 @@ class _SupabasePanelState extends ConsumerState<_SupabasePanel> {
     final email = _email.text.trim();
     final password = _password.text;
     if (email.isEmpty || password.length < 6) {
-      VioraToast.show(context, 'Enter a valid email and a 6+ character password', icon: Icons.error_outline_rounded);
+      VioraToast.show(context, 'Enter a valid email and a 6+ character password', icon: IconsaxPlusBroken.danger);
       return;
     }
     if (signUp) {

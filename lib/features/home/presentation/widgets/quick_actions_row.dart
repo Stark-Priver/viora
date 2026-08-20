@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import '../../../../core/design_system/theme/viora_neu_theme.dart';
+import '../../../../core/design_system/tokens/motion.dart';
 import '../../../../core/design_system/tokens/spacing.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class _QuickAction {
   const _QuickAction({required this.label, required this.icon, required this.color});
@@ -10,11 +13,11 @@ class _QuickAction {
 }
 
 const _actions = <_QuickAction>[
-  _QuickAction(label: 'Task', icon: Icons.add_task_rounded, color: _work),
-  _QuickAction(label: 'Expense', icon: Icons.receipt_long_rounded, color: _finance),
-  _QuickAction(label: 'Focus', icon: Icons.center_focus_strong_rounded, color: _brand),
-  _QuickAction(label: 'Journal', icon: Icons.edit_note_rounded, color: _study),
-  _QuickAction(label: 'Habit', icon: Icons.repeat_rounded, color: _health),
+  _QuickAction(label: 'Task', icon: IconsaxPlusBroken.add_circle, color: _work),
+  _QuickAction(label: 'Expense', icon: IconsaxPlusBold.receipt_item, color: _finance),
+  _QuickAction(label: 'Focus', icon: IconsaxPlusBroken.scan, color: _brand),
+  _QuickAction(label: 'Journal', icon: IconsaxPlusBroken.edit, color: _study),
+  _QuickAction(label: 'Habit', icon: IconsaxPlusBroken.repeat, color: _health),
 ];
 
 Color _work(VioraNeuTheme neu) => neu.domainWork;
@@ -47,7 +50,10 @@ class QuickActionsRow extends StatelessWidget {
         separatorBuilder: (_, __) => const SizedBox(width: VioraSpacing.md),
         itemBuilder: (context, i) {
           final action = _actions[i];
-          return _QuickActionTile(action: action, onTap: callbacks[i]);
+          return _QuickActionTile(action: action, onTap: callbacks[i])
+              .animate()
+              .fadeIn(delay: Duration(milliseconds: 40 * i), duration: VioraMotion.medium, curve: VioraMotion.standard)
+              .slideX(begin: 0.15, end: 0, delay: Duration(milliseconds: 40 * i), duration: VioraMotion.medium, curve: VioraMotion.standard);
         },
       ),
     );

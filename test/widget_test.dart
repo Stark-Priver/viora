@@ -4,6 +4,7 @@ import 'package:drift/native.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 import 'package:sqlite3/open.dart';
 
 import 'package:viora/core/database/app_database.dart';
@@ -60,7 +61,7 @@ void main() {
     expect(find.text('PLAN'), findsOneWidget);
     expect(find.text('LIFE'), findsOneWidget);
     expect(find.text('Nothing running right now'), findsOneWidget);
-    expect(find.byIcon(Icons.grid_view_rounded), findsWidgets);
+    expect(find.byIcon(IconsaxPlusBold.grid_1), findsWidgets);
 
     await _settle(tester);
   });

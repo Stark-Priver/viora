@@ -8,6 +8,7 @@ import '../../../core/design_system/widgets/viora_icon_button.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import 'providers/timeline_providers.dart';
 import 'widgets/timeline_tile.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class TimelineScreen extends ConsumerWidget {
   const TimelineScreen({super.key});
@@ -30,7 +31,7 @@ class TimelineScreen extends ConsumerWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 VioraIconButton(
-                  icon: Icons.chevron_left_rounded,
+                  icon: IconsaxPlusBroken.arrow_left_2,
                   onPressed: () => ref.read(timelineSelectedDayProvider.notifier).state = day.subtract(const Duration(days: 1)),
                 ),
                 Text(
@@ -38,7 +39,7 @@ class TimelineScreen extends ConsumerWidget {
                   style: Theme.of(context).textTheme.titleMedium,
                 ),
                 VioraIconButton(
-                  icon: Icons.chevron_right_rounded,
+                  icon: IconsaxPlusBroken.arrow_right_2,
                   onPressed: () => ref.read(timelineSelectedDayProvider.notifier).state = day.add(const Duration(days: 1)),
                 ),
               ],
@@ -47,7 +48,7 @@ class TimelineScreen extends ConsumerWidget {
           const SizedBox(height: VioraSpacing.xl2),
           if (entries.isEmpty)
             const VioraEmptyState(
-              icon: Icons.timeline_rounded,
+              icon: IconsaxPlusBroken.activity,
               title: 'Nothing logged yet',
               message: 'Completed tasks, focus sessions, transactions, habits, and calendar events for this day will show up here automatically.',
             )

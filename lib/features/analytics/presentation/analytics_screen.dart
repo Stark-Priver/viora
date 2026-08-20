@@ -13,6 +13,7 @@ import '../../goals/presentation/providers/goals_providers.dart';
 import '../../habits/presentation/providers/habits_providers.dart';
 import '../../money/presentation/providers/money_providers.dart';
 import '../../tasks/presentation/providers/tasks_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class AnalyticsScreen extends ConsumerWidget {
   const AnalyticsScreen({super.key});
@@ -70,37 +71,37 @@ class AnalyticsScreen extends ConsumerWidget {
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Focused time', value: focusMinutesThisWeek.toDouble(), formatter: (v) => '${(v ~/ 60)}h ${(v % 60).round()}m', icon: Icons.center_focus_strong_rounded, metricSize: 24),
+                      child: VioraStat(label: 'Focused time', value: focusMinutesThisWeek.toDouble(), formatter: (v) => '${(v ~/ 60)}h ${(v % 60).round()}m', icon: IconsaxPlusBroken.scan, metricSize: 24),
                     ),
                   ),
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Task completion', value: taskCompletionRate * 100, formatter: (v) => '${v.round()}%', icon: Icons.check_circle_outline_rounded, metricSize: 24),
+                      child: VioraStat(label: 'Task completion', value: taskCompletionRate * 100, formatter: (v) => '${v.round()}%', icon: IconsaxPlusBroken.tick_circle, metricSize: 24),
                     ),
                   ),
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Spend (month)', value: spendThisMonth, formatter: fmt.format, icon: Icons.account_balance_wallet_outlined, metricSize: 24),
+                      child: VioraStat(label: 'Spend (month)', value: spendThisMonth, formatter: fmt.format, icon: IconsaxPlusBroken.wallet, metricSize: 24),
                     ),
                   ),
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Habit consistency', value: habitConsistency * 100, formatter: (v) => '${v.round()}%', icon: Icons.repeat_rounded, metricSize: 24),
+                      child: VioraStat(label: 'Habit consistency', value: habitConsistency * 100, formatter: (v) => '${v.round()}%', icon: IconsaxPlusBroken.repeat, metricSize: 24),
                     ),
                   ),
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Active goals', value: goals.length.toDouble(), formatter: (v) => v.round().toString(), icon: Icons.flag_outlined, metricSize: 24),
+                      child: VioraStat(label: 'Active goals', value: goals.length.toDouble(), formatter: (v) => v.round().toString(), icon: IconsaxPlusBroken.flag, metricSize: 24),
                     ),
                   ),
                   SizedBox(
                     width: cardWidth,
                     child: VioraCard(
-                      child: VioraStat(label: 'Tasks this week', value: tasksThisWeek.length.toDouble(), formatter: (v) => v.round().toString(), icon: Icons.checklist_rounded, metricSize: 24),
+                      child: VioraStat(label: 'Tasks this week', value: tasksThisWeek.length.toDouble(), formatter: (v) => v.round().toString(), icon: IconsaxPlusBroken.task_square, metricSize: 24),
                     ),
                   ),
                 ],

@@ -3,6 +3,7 @@ import '../theme/viora_neu_theme.dart';
 import '../tokens/motion.dart';
 import '../tokens/spacing.dart';
 import '../tokens/typography.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 enum VioraTrend { up, down, flat }
 
@@ -81,7 +82,7 @@ class VioraStat extends StatelessWidget {
             children: [
               if (trend != null && trend != VioraTrend.flat)
                 Icon(
-                  trend == VioraTrend.up ? Icons.arrow_upward_rounded : Icons.arrow_downward_rounded,
+                  trend == VioraTrend.up ? IconsaxPlusBroken.arrow_up : IconsaxPlusBroken.arrow_down,
                   size: 13,
                   color: deltaColor,
                 ),

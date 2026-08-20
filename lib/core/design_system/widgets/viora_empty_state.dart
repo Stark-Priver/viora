@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/viora_neu_theme.dart';
 import '../tokens/spacing.dart';
 import 'viora_button.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Shown instead of a blank list/dashboard — guides the user to the first
 /// action rather than leaving them looking at nothing. Never skip this for
@@ -49,7 +50,7 @@ class VioraEmptyState extends StatelessWidget {
             ),
             if (actionLabel != null && onAction != null) ...[
               const SizedBox(height: VioraSpacing.xl),
-              VioraButton(label: actionLabel!, icon: Icons.add_rounded, onPressed: onAction),
+              VioraButton(label: actionLabel!, icon: IconsaxPlusBold.add, onPressed: onAction),
             ],
           ],
         ),

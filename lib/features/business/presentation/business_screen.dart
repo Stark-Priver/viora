@@ -13,6 +13,7 @@ import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_stat.dart';
 import 'providers/business_providers.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class BusinessScreen extends ConsumerWidget {
   const BusinessScreen({super.key});
@@ -35,8 +36,8 @@ class BusinessScreen extends ConsumerWidget {
             subtitle: 'Clients, projects, effective rate',
             trailing: VioraButton(
               label: 'Add project',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New project', icon: Icons.storefront_outlined, accentColor: context.neu.domainBusiness, builder: (_) => const _ProjectForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New project', icon: IconsaxPlusBroken.shop, accentColor: context.neu.domainBusiness, builder: (_) => const _ProjectForm()),
             ),
           ),
           if (projects.isNotEmpty) ...[
@@ -49,7 +50,7 @@ class BusinessScreen extends ConsumerWidget {
                       label: 'Revenue',
                       value: projects.fold<double>(0, (s, p) => s + p.revenue),
                       formatter: fmt.format,
-                      icon: Icons.trending_up_rounded,
+                      icon: IconsaxPlusBold.trend_up,
                       metricSize: 22,
                     ),
                   ),
@@ -58,7 +59,7 @@ class BusinessScreen extends ConsumerWidget {
                       label: 'Expenses',
                       value: projects.fold<double>(0, (s, p) => s + p.expenses),
                       formatter: fmt.format,
-                      icon: Icons.trending_down_rounded,
+                      icon: IconsaxPlusBroken.trend_down,
                       metricSize: 22,
                     ),
                   ),
@@ -67,7 +68,7 @@ class BusinessScreen extends ConsumerWidget {
                       label: 'Net',
                       value: projects.fold<double>(0, (s, p) => s + (p.revenue - p.expenses)),
                       formatter: fmt.format,
-                      icon: Icons.account_balance_wallet_outlined,
+                      icon: IconsaxPlusBroken.wallet,
                       metricSize: 22,
                     ),
                   ),
@@ -80,11 +81,11 @@ class BusinessScreen extends ConsumerWidget {
             data: (projects) {
               if (projects.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.storefront_outlined,
+                  icon: IconsaxPlusBroken.shop,
                   title: 'No projects yet',
                   message: 'Track revenue, expenses, and hours to see your effective hourly rate.',
                   actionLabel: 'Add project',
-                  onAction: () => showVioraFormSheet(context: context, title: 'New project', icon: Icons.storefront_outlined, accentColor: context.neu.domainBusiness, builder: (_) => const _ProjectForm()),
+                  onAction: () => showVioraFormSheet(context: context, title: 'New project', icon: IconsaxPlusBroken.shop, accentColor: context.neu.domainBusiness, builder: (_) => const _ProjectForm()),
                 );
               }
               return Column(
@@ -99,7 +100,7 @@ class BusinessScreen extends ConsumerWidget {
                             Row(
                               children: [
                                 Expanded(child: Text(p.name, style: Theme.of(context).textTheme.titleMedium, maxLines: 1, overflow: TextOverflow.ellipsis)),
-                                VioraIconButton(icon: Icons.delete_outline_rounded, size: 34, tooltip: 'Delete', onPressed: () => actions.deleteProject(p.id)),
+                                VioraIconButton(icon: IconsaxPlusBroken.trash, size: 34, tooltip: 'Delete', onPressed: () => actions.deleteProject(p.id)),
                               ],
                             ),
                             const SizedBox(height: VioraSpacing.sm),
@@ -108,10 +109,10 @@ class BusinessScreen extends ConsumerWidget {
                               runSpacing: VioraSpacing.xs,
                               children: [
                                 VioraChip(label: p.status.replaceAll('_', ' '), onTap: () => actions.cycleStatus(p.id, p.status)),
-                                VioraChip(label: 'Revenue ${fmt.format(p.revenue)}', icon: Icons.trending_up_rounded),
-                                VioraChip(label: 'Expenses ${fmt.format(p.expenses)}', icon: Icons.trending_down_rounded),
+                                VioraChip(label: 'Revenue ${fmt.format(p.revenue)}', icon: IconsaxPlusBold.trend_up),
+                                VioraChip(label: 'Expenses ${fmt.format(p.expenses)}', icon: IconsaxPlusBroken.trend_down),
                                 if (p.hoursSpent > 0)
-                                  VioraChip(label: '${fmt.format((p.revenue - p.expenses) / p.hoursSpent)}/hr', icon: Icons.schedule_rounded),
+                                  VioraChip(label: '${fmt.format((p.revenue - p.expenses) / p.hoursSpent)}/hr', icon: IconsaxPlusBroken.clock),
                               ],
                             ),
                           ],
@@ -129,14 +130,14 @@ class BusinessScreen extends ConsumerWidget {
             title: 'Clients',
             trailing: VioraButton(
               label: 'Add',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New client', icon: Icons.person_add_alt_1_rounded, accentColor: context.neu.domainBusiness, builder: (_) => const _ClientForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New client', icon: IconsaxPlusBroken.user_add, accentColor: context.neu.domainBusiness, builder: (_) => const _ClientForm()),
             ),
           ),
           clientsAsync.when(
             data: (clients) {
               if (clients.isEmpty) {
-                return const VioraEmptyState(icon: Icons.people_outline_rounded, title: 'No clients yet', message: 'Add clients to link them to projects.');
+                return const VioraEmptyState(icon: IconsaxPlusBroken.people, title: 'No clients yet', message: 'Add clients to link them to projects.');
               }
               return Column(
                 children: [
@@ -157,7 +158,7 @@ class BusinessScreen extends ConsumerWidget {
                                 ],
                               ),
                             ),
-                            VioraIconButton(icon: Icons.delete_outline_rounded, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteClient(c.id)),
+                            VioraIconButton(icon: IconsaxPlusBroken.trash, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteClient(c.id)),
                           ],
                         ),
                       ),
@@ -215,7 +216,7 @@ class _ProjectFormState extends ConsumerState<_ProjectForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add project',
-          icon: Icons.storefront_outlined,
+          icon: IconsaxPlusBroken.shop,
           expand: true,
           onPressed: () {
             final name = _name.text.trim();
@@ -265,7 +266,7 @@ class _ClientFormState extends ConsumerState<_ClientForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add client',
-          icon: Icons.person_add_alt_1_rounded,
+          icon: IconsaxPlusBroken.user_add,
           expand: true,
           onPressed: () {
             final name = _name.text.trim();

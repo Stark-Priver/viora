@@ -4,6 +4,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/projects_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class ProjectForm extends ConsumerStatefulWidget {
   const ProjectForm({super.key});
@@ -39,7 +40,7 @@ class _ProjectFormState extends ConsumerState<ProjectForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add project',
-          icon: Icons.folder_open_rounded,
+          icon: IconsaxPlusBroken.folder_open,
           expand: true,
           onPressed: () {
             final name = _name.text.trim();

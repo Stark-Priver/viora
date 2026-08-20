@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_section.dart';
 import '../../../../core/design_system/widgets/viora_progress_bar.dart';
 import '../../../../core/design_system/widgets/viora_empty_state.dart';
 import '../../domain/home_dashboard_data.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class GoalsRow extends StatelessWidget {
   const GoalsRow({super.key, required this.goals, required this.onAddGoal});
@@ -21,7 +22,7 @@ class GoalsRow extends StatelessWidget {
         const VioraSection(title: 'Goals', subtitle: 'Top active goals'),
         if (goals.isEmpty)
           VioraEmptyState(
-            icon: Icons.flag_outlined,
+            icon: IconsaxPlusBroken.flag,
             title: 'No goals yet',
             message: 'Set a target and start logging progress toward it.',
             actionLabel: 'Add goal',

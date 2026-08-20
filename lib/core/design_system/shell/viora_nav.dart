@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class VioraNavItem {
   const VioraNavItem({required this.label, required this.icon, this.path});
@@ -23,47 +24,47 @@ class VioraNavGroup {
 
 const vioraNavGroups = <VioraNavGroup>[
   VioraNavGroup(label: 'TODAY', items: [
-    VioraNavItem(label: 'Home', icon: Icons.grid_view_rounded, path: '/'),
-    VioraNavItem(label: 'Timeline', icon: Icons.timeline_rounded, path: '/timeline'),
-    VioraNavItem(label: 'Calendar', icon: Icons.calendar_today_rounded, path: '/calendar'),
+    VioraNavItem(label: 'Home', icon: IconsaxPlusBold.grid_1, path: '/'),
+    VioraNavItem(label: 'Timeline', icon: IconsaxPlusBroken.activity, path: '/timeline'),
+    VioraNavItem(label: 'Calendar', icon: IconsaxPlusBroken.calendar, path: '/calendar'),
   ]),
   VioraNavGroup(label: 'PLAN', items: [
-    VioraNavItem(label: 'Tasks', icon: Icons.check_circle_outline_rounded, path: '/tasks'),
-    VioraNavItem(label: 'Projects', icon: Icons.folder_open_rounded, path: '/projects'),
-    VioraNavItem(label: 'Goals', icon: Icons.flag_outlined, path: '/goals'),
-    VioraNavItem(label: 'Habits', icon: Icons.repeat_rounded, path: '/habits'),
-    VioraNavItem(label: 'Focus', icon: Icons.center_focus_strong_rounded, path: '/focus'),
+    VioraNavItem(label: 'Tasks', icon: IconsaxPlusBroken.tick_circle, path: '/tasks'),
+    VioraNavItem(label: 'Projects', icon: IconsaxPlusBroken.folder_open, path: '/projects'),
+    VioraNavItem(label: 'Goals', icon: IconsaxPlusBroken.flag, path: '/goals'),
+    VioraNavItem(label: 'Habits', icon: IconsaxPlusBroken.repeat, path: '/habits'),
+    VioraNavItem(label: 'Focus', icon: IconsaxPlusBroken.scan, path: '/focus'),
   ]),
   VioraNavGroup(label: 'LIFE', items: [
-    VioraNavItem(label: 'Money', icon: Icons.account_balance_wallet_outlined, path: '/money'),
-    VioraNavItem(label: 'Health', icon: Icons.favorite_border_rounded, path: '/health'),
-    VioraNavItem(label: 'Education', icon: Icons.school_outlined, path: '/education'),
-    VioraNavItem(label: 'Career', icon: Icons.work_outline_rounded, path: '/career'),
-    VioraNavItem(label: 'Business', icon: Icons.storefront_outlined, path: '/business'),
-    VioraNavItem(label: 'Transport', icon: Icons.two_wheeler_rounded, path: '/transport'),
+    VioraNavItem(label: 'Money', icon: IconsaxPlusBroken.wallet, path: '/money'),
+    VioraNavItem(label: 'Health', icon: IconsaxPlusBroken.heart, path: '/health'),
+    VioraNavItem(label: 'Education', icon: IconsaxPlusBroken.teacher, path: '/education'),
+    VioraNavItem(label: 'Career', icon: IconsaxPlusBroken.briefcase, path: '/career'),
+    VioraNavItem(label: 'Business', icon: IconsaxPlusBroken.shop, path: '/business'),
+    VioraNavItem(label: 'Transport', icon: IconsaxPlusBroken.car, path: '/transport'),
   ]),
   VioraNavGroup(label: 'DIGITAL', items: [
-    VioraNavItem(label: 'Activity', icon: Icons.bar_chart_rounded, path: '/activity'),
-    VioraNavItem(label: 'Communications', icon: Icons.forum_outlined, path: '/communications'),
+    VioraNavItem(label: 'Activity', icon: IconsaxPlusBold.chart_2, path: '/activity'),
+    VioraNavItem(label: 'Communications', icon: IconsaxPlusBroken.messages, path: '/communications'),
   ]),
   VioraNavGroup(label: 'REFLECT', items: [
-    VioraNavItem(label: 'Journal', icon: Icons.menu_book_outlined, path: '/journal'),
-    VioraNavItem(label: 'Analytics', icon: Icons.insights_rounded, path: '/analytics'),
-    VioraNavItem(label: 'Reports', icon: Icons.description_outlined, path: '/reports'),
+    VioraNavItem(label: 'Journal', icon: IconsaxPlusBroken.book_1, path: '/journal'),
+    VioraNavItem(label: 'Analytics', icon: IconsaxPlusBold.chart_square, path: '/analytics'),
+    VioraNavItem(label: 'Reports', icon: IconsaxPlusBroken.document_text, path: '/reports'),
   ]),
   VioraNavGroup(label: 'SYSTEM', items: [
-    VioraNavItem(label: 'AI Coach', icon: Icons.auto_awesome_rounded, path: '/ai-coach'),
-    VioraNavItem(label: 'Settings', icon: Icons.settings_outlined, path: '/settings'),
+    VioraNavItem(label: 'AI Coach', icon: IconsaxPlusBroken.magic_star, path: '/ai-coach'),
+    VioraNavItem(label: 'Settings', icon: IconsaxPlusBroken.setting_2, path: '/settings'),
   ]),
 ];
 
 /// Compact primary set for mobile bottom navigation.
 const vioraMobileNavItems = <VioraNavItem>[
-  VioraNavItem(label: 'Home', icon: Icons.grid_view_rounded, path: '/'),
-  VioraNavItem(label: 'Tasks', icon: Icons.check_circle_outline_rounded, path: '/tasks'),
-  VioraNavItem(label: 'Focus', icon: Icons.center_focus_strong_rounded, path: '/focus'),
-  VioraNavItem(label: 'Money', icon: Icons.account_balance_wallet_outlined, path: '/money'),
-  VioraNavItem(label: 'More', icon: Icons.grid_view_outlined, path: '/more'),
+  VioraNavItem(label: 'Home', icon: IconsaxPlusBold.grid_1, path: '/'),
+  VioraNavItem(label: 'Tasks', icon: IconsaxPlusBroken.tick_circle, path: '/tasks'),
+  VioraNavItem(label: 'Focus', icon: IconsaxPlusBroken.scan, path: '/focus'),
+  VioraNavItem(label: 'Money', icon: IconsaxPlusBroken.wallet, path: '/money'),
+  VioraNavItem(label: 'More', icon: IconsaxPlusBroken.grid_1, path: '/more'),
 ];
 
 /// Every enabled item across all groups, in order — used by the tablet

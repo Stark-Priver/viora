@@ -12,6 +12,7 @@ import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_stat.dart';
 import 'providers/career_providers.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class CareerScreen extends ConsumerWidget {
   const CareerScreen({super.key});
@@ -34,8 +35,8 @@ class CareerScreen extends ConsumerWidget {
             subtitle: 'Positions, growth, achievements',
             trailing: VioraButton(
               label: 'Add role',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New position', icon: Icons.work_outline_rounded, accentColor: context.neu.domainWork, builder: (_) => const _PositionForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New position', icon: IconsaxPlusBroken.briefcase, accentColor: context.neu.domainWork, builder: (_) => const _PositionForm()),
             ),
           ),
           if (positions.isNotEmpty) ...[
@@ -64,7 +65,7 @@ class CareerScreen extends ConsumerWidget {
                       label: 'Roles',
                       value: positions.length.toDouble(),
                       formatter: (v) => v.toInt().toString(),
-                      icon: Icons.work_outline_rounded,
+                      icon: IconsaxPlusBroken.briefcase,
                       metricSize: 22,
                     ),
                   ),
@@ -73,7 +74,7 @@ class CareerScreen extends ConsumerWidget {
                       label: 'Wins',
                       value: achievements.length.toDouble(),
                       formatter: (v) => v.toInt().toString(),
-                      icon: Icons.emoji_events_outlined,
+                      icon: IconsaxPlusBroken.cup,
                       metricSize: 22,
                     ),
                   ),
@@ -85,7 +86,7 @@ class CareerScreen extends ConsumerWidget {
           positionsAsync.when(
             data: (positions) {
               if (positions.isEmpty) {
-                return const VioraEmptyState(icon: Icons.work_outline_rounded, title: 'No positions yet', message: 'Add your current or past roles.');
+                return const VioraEmptyState(icon: IconsaxPlusBroken.briefcase, title: 'No positions yet', message: 'Add your current or past roles.');
               }
               return Column(
                 children: [
@@ -109,7 +110,7 @@ class CareerScreen extends ConsumerWidget {
                                 ],
                               ),
                             ),
-                            VioraIconButton(icon: Icons.delete_outline_rounded, size: 32, tooltip: 'Delete', onPressed: () => actions.deletePosition(p.id)),
+                            VioraIconButton(icon: IconsaxPlusBroken.trash, size: 32, tooltip: 'Delete', onPressed: () => actions.deletePosition(p.id)),
                           ],
                         ),
                       ),
@@ -125,14 +126,14 @@ class CareerScreen extends ConsumerWidget {
             title: 'Achievements',
             trailing: VioraButton(
               label: 'Add',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New achievement', icon: Icons.emoji_events_outlined, accentColor: context.neu.warning, builder: (_) => const _AchievementForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New achievement', icon: IconsaxPlusBroken.cup, accentColor: context.neu.warning, builder: (_) => const _AchievementForm()),
             ),
           ),
           achievementsAsync.when(
             data: (achievements) {
               if (achievements.isEmpty) {
-                return const VioraEmptyState(icon: Icons.emoji_events_outlined, title: 'No achievements logged', message: 'Record wins for CVs, reviews, and portfolios.');
+                return const VioraEmptyState(icon: IconsaxPlusBroken.cup, title: 'No achievements logged', message: 'Record wins for CVs, reviews, and portfolios.');
               }
               return Column(
                 children: [
@@ -153,7 +154,7 @@ class CareerScreen extends ConsumerWidget {
                                 ],
                               ),
                             ),
-                            VioraIconButton(icon: Icons.delete_outline_rounded, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteAchievement(a.id)),
+                            VioraIconButton(icon: IconsaxPlusBroken.trash, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteAchievement(a.id)),
                           ],
                         ),
                       ),
@@ -204,7 +205,7 @@ class _PositionFormState extends ConsumerState<_PositionForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add position',
-          icon: Icons.work_outline_rounded,
+          icon: IconsaxPlusBroken.briefcase,
           expand: true,
           onPressed: () {
             final role = _role.text.trim();
@@ -250,7 +251,7 @@ class _AchievementFormState extends ConsumerState<_AchievementForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add achievement',
-          icon: Icons.emoji_events_outlined,
+          icon: IconsaxPlusBroken.cup,
           expand: true,
           onPressed: () {
             final title = _title.text.trim();

@@ -5,6 +5,7 @@ import '../../../../core/design_system/theme/viora_neu_theme.dart';
 import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_icon_button.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HabitCard extends StatelessWidget {
   const HabitCard({
@@ -63,7 +64,7 @@ class HabitCard extends StatelessWidget {
                                   color: done ? neu.success : neu.surfaceSunken,
                                   border: isToday ? Border.all(color: neu.brand, width: 2) : null,
                                 ),
-                                child: done ? const Icon(Icons.check_rounded, size: 14, color: Colors.white) : null,
+                                child: done ? const Icon(IconsaxPlusBold.check, size: 14, color: Colors.white) : null,
                               ),
                             ),
                           ),
@@ -77,7 +78,7 @@ class HabitCard extends StatelessWidget {
               ],
             ),
           ),
-          VioraIconButton(icon: Icons.archive_outlined, size: 34, tooltip: 'Archive', onPressed: onArchive),
+          VioraIconButton(icon: IconsaxPlusBroken.archive, size: 34, tooltip: 'Archive', onPressed: onArchive),
         ],
       ),
     );

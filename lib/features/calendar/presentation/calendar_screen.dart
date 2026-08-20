@@ -17,6 +17,7 @@ import 'providers/calendar_providers.dart';
 import 'widgets/event_form.dart';
 import 'widgets/month_grid.dart';
 import 'widgets/week_grid.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class CalendarScreen extends ConsumerWidget {
   const CalendarScreen({super.key});
@@ -27,7 +28,7 @@ class CalendarScreen extends ConsumerWidget {
     final viewMode = ref.watch(calendarViewModeProvider);
     void selectDay(DateTime d) => ref.read(selectedDayProvider.notifier).state = d;
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'New event', icon: Icons.event_outlined, accentColor: context.neu.brand, builder: (_) => EventForm(day: selectedDay));
+    void openAddForm() => showVioraFormSheet(context: context, title: 'New event', icon: IconsaxPlusBroken.calendar, accentColor: context.neu.brand, builder: (_) => EventForm(day: selectedDay));
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -37,7 +38,7 @@ class CalendarScreen extends ConsumerWidget {
           VioraSection(
             title: 'Calendar',
             subtitle: DateFormat('MMMM yyyy').format(selectedDay),
-            trailing: VioraButton(label: 'Add', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Add', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           Wrap(
             spacing: VioraSpacing.sm,
@@ -82,7 +83,7 @@ class _DayView extends ConsumerWidget {
           data: (events) {
             if (events.isEmpty) {
               return VioraEmptyState(
-                icon: Icons.event_note_outlined,
+                icon: IconsaxPlusBroken.calendar_1,
                 title: 'Nothing scheduled',
                 message: 'Add an event to plan this day.',
                 actionLabel: 'Add event',
@@ -113,11 +114,11 @@ class _DayView extends ConsumerWidget {
                                     Flexible(child: Text(e.title, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis)),
                                     if (e.recurrence != RecurrenceRules.none) ...[
                                       const SizedBox(width: VioraSpacing.xs),
-                                      Icon(Icons.repeat_rounded, size: 14, color: context.neu.textTertiary),
+                                      Icon(IconsaxPlusBroken.repeat, size: 14, color: context.neu.textTertiary),
                                     ],
                                     if (e.reminderMinutesBefore != null) ...[
                                       const SizedBox(width: VioraSpacing.xs),
-                                      Icon(Icons.notifications_none_rounded, size: 14, color: context.neu.textTertiary),
+                                      Icon(IconsaxPlusBroken.notification, size: 14, color: context.neu.textTertiary),
                                     ],
                                   ],
                                 ),
@@ -129,7 +130,7 @@ class _DayView extends ConsumerWidget {
                             ),
                           ),
                           VioraIconButton(
-                            icon: Icons.delete_outline_rounded,
+                            icon: IconsaxPlusBroken.trash,
                             size: 32,
                             tooltip: 'Delete',
                             onPressed: () => _confirmDelete(context, ref, actions, e),

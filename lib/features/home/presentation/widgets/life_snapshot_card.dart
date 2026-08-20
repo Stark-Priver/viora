@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_section.dart';
 import '../../../../core/design_system/widgets/viora_activity_bar.dart';
 import '../../../../core/design_system/widgets/viora_stat.dart';
 import '../../domain/home_dashboard_data.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class LifeSnapshotCard extends StatelessWidget {
   const LifeSnapshotCard({
@@ -47,7 +48,7 @@ class LifeSnapshotCard extends StatelessWidget {
                   label: 'Sleep',
                   value: sleepMinutes.toDouble(),
                   formatter: (_) => '${sleepH}h ${sleepM}m',
-                  icon: Icons.bedtime_outlined,
+                  icon: IconsaxPlusBroken.moon,
                   metricSize: 22,
                 ),
               ),
@@ -56,7 +57,7 @@ class LifeSnapshotCard extends StatelessWidget {
                   label: 'Focus score',
                   value: focusScore * 100,
                   formatter: (v) => '${v.round()}%',
-                  icon: Icons.center_focus_strong_rounded,
+                  icon: IconsaxPlusBroken.scan,
                   metricSize: 22,
                 ),
               ),
@@ -65,7 +66,7 @@ class LifeSnapshotCard extends StatelessWidget {
                   label: 'Plan adherence',
                   value: planAdherence * 100,
                   formatter: (v) => '${v.round()}%',
-                  icon: Icons.fact_check_outlined,
+                  icon: IconsaxPlusBroken.clipboard_tick,
                   metricSize: 22,
                 ),
               ),

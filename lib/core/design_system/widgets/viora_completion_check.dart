@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// A circular checkbox that pops with a spring bounce the moment it becomes
 /// checked — used for task/habit completion so the one moment of "done"
@@ -33,7 +34,7 @@ class VioraCompletionCheck extends StatelessWidget {
             color: completed ? neu.success : Colors.transparent,
             border: Border.all(color: completed ? neu.success : neu.divider, width: 2),
           ),
-          child: completed ? Icon(Icons.check_rounded, size: size * 0.62, color: Colors.white) : null,
+          child: completed ? Icon(IconsaxPlusBold.check, size: size * 0.62, color: Colors.white) : null,
         ),
       ),
     );

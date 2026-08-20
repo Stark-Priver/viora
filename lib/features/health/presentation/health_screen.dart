@@ -12,6 +12,7 @@ import '../../../core/design_system/widgets/viora_input.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_toast.dart';
 import 'providers/health_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class HealthScreen extends ConsumerStatefulWidget {
   const HealthScreen({super.key});
@@ -73,12 +74,12 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 VioraIconButton(
-                  icon: Icons.chevron_left_rounded,
+                  icon: IconsaxPlusBroken.arrow_left_2,
                   onPressed: () => ref.read(healthSelectedDayProvider.notifier).state = day.subtract(const Duration(days: 1)),
                 ),
                 Text(DateFormat('EEEE, d MMMM').format(day), style: Theme.of(context).textTheme.titleMedium),
                 VioraIconButton(
-                  icon: Icons.chevron_right_rounded,
+                  icon: IconsaxPlusBroken.arrow_right_2,
                   onPressed: () => ref.read(healthSelectedDayProvider.notifier).state = day.add(const Duration(days: 1)),
                 ),
               ],
@@ -115,7 +116,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
           const SizedBox(height: VioraSpacing.xl2),
           VioraButton(
             label: 'Save entry',
-            icon: Icons.check_rounded,
+            icon: IconsaxPlusBold.check,
             expand: true,
             onPressed: () {
               final hours = double.tryParse(_sleepHours.text.trim());
@@ -128,7 +129,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
                     mood: _mood,
                     energy: _energy,
                   );
-              VioraToast.show(context, 'Entry saved.', icon: Icons.check_circle_outline_rounded);
+              VioraToast.show(context, 'Entry saved.', icon: IconsaxPlusBroken.tick_circle);
             },
           ),
           const SizedBox(height: VioraSpacing.xl2),
@@ -136,7 +137,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
           historyAsync.when(
             data: (rows) {
               if (rows.isEmpty) {
-                return const VioraEmptyState(icon: Icons.favorite_border_rounded, title: 'No entries yet', message: 'Log today\'s sleep, water, or mood above.');
+                return const VioraEmptyState(icon: IconsaxPlusBroken.heart, title: 'No entries yet', message: 'Log today\'s sleep, water, or mood above.');
               }
               return Column(
                 children: [
@@ -150,9 +151,9 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
                             Expanded(
                               child: Text(DateFormat('EEE, d MMM').format(r.date), style: Theme.of(context).textTheme.bodyLarge),
                             ),
-                            if (r.sleepMinutes != null) _tag(context, Icons.bedtime_outlined, '${(r.sleepMinutes! / 60).toStringAsFixed(1)}h'),
-                            if (r.weightKg != null) _tag(context, Icons.monitor_weight_outlined, '${r.weightKg}kg'),
-                            if (r.mood != null) _tag(context, Icons.mood_outlined, '${r.mood}/5'),
+                            if (r.sleepMinutes != null) _tag(context, IconsaxPlusBroken.moon, '${(r.sleepMinutes! / 60).toStringAsFixed(1)}h'),
+                            if (r.weightKg != null) _tag(context, IconsaxPlusBroken.weight, '${r.weightKg}kg'),
+                            if (r.mood != null) _tag(context, IconsaxPlusBroken.emoji_happy, '${r.mood}/5'),
                           ],
                         ),
                       ),

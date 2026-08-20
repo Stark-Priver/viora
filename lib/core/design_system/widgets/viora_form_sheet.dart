@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../theme/viora_neu_theme.dart';
 import '../tokens/spacing.dart';
 import 'viora_icon_button.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Shared bottom-sheet chrome for every add/edit form in the app: a grab
 /// handle, an icon-badged title with an explicit close affordance, and
@@ -64,7 +65,7 @@ Future<T?> showVioraFormSheet<T>({
                         ],
                         Expanded(child: Text(title, style: Theme.of(sheetContext).textTheme.headlineSmall)),
                         VioraIconButton(
-                          icon: Icons.close_rounded,
+                          icon: IconsaxPlusBroken.close_circle,
                           size: 34,
                           tooltip: 'Close',
                           onPressed: () => Navigator.of(sheetContext).pop(),

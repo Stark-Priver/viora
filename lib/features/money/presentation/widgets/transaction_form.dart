@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/money_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class TransactionForm extends ConsumerStatefulWidget {
   const TransactionForm({super.key});
@@ -48,7 +49,7 @@ class _TransactionFormState extends ConsumerState<TransactionForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: _type == TransactionTypes.expense ? 'Add expense' : 'Add income',
-          icon: Icons.add_rounded,
+          icon: IconsaxPlusBold.add,
           expand: true,
           onPressed: accounts.isEmpty
               ? null

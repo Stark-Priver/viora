@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_button.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_input.dart';
 import '../providers/tasks_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class TaskForm extends ConsumerStatefulWidget {
   const TaskForm({super.key});
@@ -51,7 +52,7 @@ class _TaskFormState extends ConsumerState<TaskForm> {
           children: [
             VioraChip(
               label: _deadline == null ? 'Pick a date' : '${_deadline!.year}-${_deadline!.month.toString().padLeft(2, '0')}-${_deadline!.day.toString().padLeft(2, '0')}',
-              icon: Icons.event_outlined,
+              icon: IconsaxPlusBroken.calendar,
               selected: _deadline != null,
               onTap: () async {
                 final picked = await showDatePicker(
@@ -64,13 +65,13 @@ class _TaskFormState extends ConsumerState<TaskForm> {
               },
             ),
             if (_deadline != null)
-              VioraChip(label: 'Clear', icon: Icons.close_rounded, onTap: () => setState(() => _deadline = null)),
+              VioraChip(label: 'Clear', icon: IconsaxPlusBroken.close_circle, onTap: () => setState(() => _deadline = null)),
           ],
         ),
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add task',
-          icon: Icons.add_rounded,
+          icon: IconsaxPlusBold.add,
           expand: true,
           onPressed: () {
             final title = _titleController.text.trim();

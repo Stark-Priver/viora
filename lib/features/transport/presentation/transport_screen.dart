@@ -13,6 +13,7 @@ import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_stat.dart';
 import 'providers/transport_providers.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class TransportScreen extends ConsumerWidget {
   const TransportScreen({super.key});
@@ -33,19 +34,19 @@ class TransportScreen extends ConsumerWidget {
             subtitle: 'Fuel, maintenance, cost per km',
             trailing: VioraButton(
               label: 'Add vehicle',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New vehicle', icon: Icons.two_wheeler_rounded, accentColor: context.neu.domainTransport, builder: (_) => const _VehicleForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New vehicle', icon: IconsaxPlusBroken.car, accentColor: context.neu.domainTransport, builder: (_) => const _VehicleForm()),
             ),
           ),
           vehiclesAsync.when(
             data: (vehicles) {
               if (vehicles.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.two_wheeler_rounded,
+                  icon: IconsaxPlusBroken.car,
                   title: 'No vehicles yet',
                   message: 'Add a motorcycle, car, or bike to start logging fuel and maintenance.',
                   actionLabel: 'Add vehicle',
-                  onAction: () => showVioraFormSheet(context: context, title: 'New vehicle', icon: Icons.two_wheeler_rounded, accentColor: context.neu.domainTransport, builder: (_) => const _VehicleForm()),
+                  onAction: () => showVioraFormSheet(context: context, title: 'New vehicle', icon: IconsaxPlusBroken.car, accentColor: context.neu.domainTransport, builder: (_) => const _VehicleForm()),
                 );
               }
 
@@ -63,7 +64,7 @@ class TransportScreen extends ConsumerWidget {
                       for (final v in vehicles)
                         VioraChip(
                           label: v.name,
-                          icon: Icons.two_wheeler_rounded,
+                          icon: IconsaxPlusBroken.car,
                           selected: v.id == activeId,
                           onTap: () => ref.read(selectedVehicleIdProvider.notifier).state = v.id,
                         ),
@@ -75,18 +76,18 @@ class TransportScreen extends ConsumerWidget {
                       Expanded(
                         child: VioraButton(
                           label: 'Log fuel',
-                          icon: Icons.local_gas_station_outlined,
+                          icon: IconsaxPlusBroken.gas_station,
                           expand: true,
-                          onPressed: () => showVioraFormSheet(context: context, title: 'Log fuel', icon: Icons.local_gas_station_outlined, accentColor: context.neu.domainTransport, builder: (_) => _FuelForm(vehicleId: activeId)),
+                          onPressed: () => showVioraFormSheet(context: context, title: 'Log fuel', icon: IconsaxPlusBroken.gas_station, accentColor: context.neu.domainTransport, builder: (_) => _FuelForm(vehicleId: activeId)),
                         ),
                       ),
                       const SizedBox(width: VioraSpacing.md),
                       Expanded(
                         child: VioraButton(
                           label: 'Log service',
-                          icon: Icons.build_outlined,
+                          icon: IconsaxPlusBroken.setting_2,
                           expand: true,
-                          onPressed: () => showVioraFormSheet(context: context, title: 'Log maintenance', icon: Icons.build_outlined, accentColor: context.neu.domainTransport, builder: (_) => _MaintenanceForm(vehicleId: activeId)),
+                          onPressed: () => showVioraFormSheet(context: context, title: 'Log maintenance', icon: IconsaxPlusBroken.setting_2, accentColor: context.neu.domainTransport, builder: (_) => _MaintenanceForm(vehicleId: activeId)),
                         ),
                       ),
                     ],
@@ -103,9 +104,9 @@ class TransportScreen extends ConsumerWidget {
                           orbColors: [context.neu.domainTransport, context.neu.brand],
                           child: Row(
                             children: [
-                              Expanded(child: VioraStat(label: 'Total spent', value: totalCost, formatter: fmt.format, icon: Icons.payments_outlined, metricSize: 22)),
-                              Expanded(child: VioraStat(label: 'Litres', value: totalLitres, formatter: (v) => v.toStringAsFixed(1), icon: Icons.local_gas_station_outlined, metricSize: 22)),
-                              Expanded(child: VioraStat(label: 'Cost/L', value: totalLitres == 0 ? 0 : totalCost / totalLitres, formatter: fmt.format, icon: Icons.calculate_outlined, metricSize: 22)),
+                              Expanded(child: VioraStat(label: 'Total spent', value: totalCost, formatter: fmt.format, icon: IconsaxPlusBroken.money, metricSize: 22)),
+                              Expanded(child: VioraStat(label: 'Litres', value: totalLitres, formatter: (v) => v.toStringAsFixed(1), icon: IconsaxPlusBroken.gas_station, metricSize: 22)),
+                              Expanded(child: VioraStat(label: 'Cost/L', value: totalLitres == 0 ? 0 : totalCost / totalLitres, formatter: fmt.format, icon: IconsaxPlusBroken.calculator, metricSize: 22)),
                             ],
                           ),
                         );
@@ -120,7 +121,7 @@ class TransportScreen extends ConsumerWidget {
                     final fuelAsync = ref.watch(fuelLogsProvider);
                     return fuelAsync.when(
                       data: (logs) {
-                        if (logs.isEmpty) return const VioraEmptyState(icon: Icons.local_gas_station_outlined, title: 'No fuel logs', message: 'Log a fill-up to start tracking cost.');
+                        if (logs.isEmpty) return const VioraEmptyState(icon: IconsaxPlusBroken.gas_station, title: 'No fuel logs', message: 'Log a fill-up to start tracking cost.');
                         return Column(
                           children: [
                             for (final l in logs)
@@ -151,7 +152,7 @@ class TransportScreen extends ConsumerWidget {
                     final maintAsync = ref.watch(maintenanceLogsProvider);
                     return maintAsync.when(
                       data: (logs) {
-                        if (logs.isEmpty) return const VioraEmptyState(icon: Icons.build_outlined, title: 'No maintenance logs', message: 'Log an oil change, tyres, or repair.');
+                        if (logs.isEmpty) return const VioraEmptyState(icon: IconsaxPlusBroken.setting_2, title: 'No maintenance logs', message: 'Log an oil change, tyres, or repair.');
                         return Column(
                           children: [
                             for (final l in logs)
@@ -221,7 +222,7 @@ class _VehicleFormState extends ConsumerState<_VehicleForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Add vehicle',
-          icon: Icons.two_wheeler_rounded,
+          icon: IconsaxPlusBroken.car,
           expand: true,
           onPressed: () {
             final name = _name.text.trim();
@@ -269,7 +270,7 @@ class _FuelFormState extends ConsumerState<_FuelForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Log fuel',
-          icon: Icons.local_gas_station_outlined,
+          icon: IconsaxPlusBroken.gas_station,
           expand: true,
           onPressed: () {
             final litres = double.tryParse(_litres.text.trim());
@@ -318,7 +319,7 @@ class _MaintenanceFormState extends ConsumerState<_MaintenanceForm> {
         const SizedBox(height: VioraSpacing.xl2),
         VioraButton(
           label: 'Log maintenance',
-          icon: Icons.build_outlined,
+          icon: IconsaxPlusBroken.setting_2,
           expand: true,
           onPressed: () {
             final type = _type.text.trim();

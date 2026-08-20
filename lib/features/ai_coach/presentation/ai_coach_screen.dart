@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../core/design_system/widgets/viora_info_screen.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class AiCoachScreen extends StatelessWidget {
   const AiCoachScreen({super.key});
@@ -9,7 +10,7 @@ class AiCoachScreen extends StatelessWidget {
     return const VioraInfoScreen(
       title: 'AI Coach',
       subtitle: 'Ask questions about your own data',
-      icon: Icons.auto_awesome_rounded,
+      icon: IconsaxPlusBroken.magic_star,
       headline: 'AI Coach needs a model provider decision before it can ship',
       body: 'This is meant to answer things like "where did my time go this week" or "how much did I spend on '
           'the motorcycle" using your real Viora data — which means picking an LLM provider, wiring an API key '

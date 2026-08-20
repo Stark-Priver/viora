@@ -14,6 +14,7 @@ import '../../../core/design_system/widgets/viora_stat.dart';
 import '../../../core/design_system/widgets/viora_surface.dart';
 import 'providers/money_providers.dart';
 import 'widgets/transaction_form.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class MoneyScreen extends ConsumerWidget {
   const MoneyScreen({super.key});
@@ -25,7 +26,7 @@ class MoneyScreen extends ConsumerWidget {
     final actions = ref.read(moneyActionsProvider);
     final fmt = NumberFormat.decimalPattern();
 
-    void openAddForm() => showVioraFormSheet(context: context, title: 'New transaction', icon: Icons.receipt_long_outlined, accentColor: context.neu.domainFinance, builder: (_) => const TransactionForm());
+    void openAddForm() => showVioraFormSheet(context: context, title: 'New transaction', icon: IconsaxPlusBroken.receipt_item, accentColor: context.neu.domainFinance, builder: (_) => const TransactionForm());
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
@@ -35,7 +36,7 @@ class MoneyScreen extends ConsumerWidget {
           VioraSection(
             title: 'Money',
             subtitle: 'Income, expenses, and balance',
-            trailing: VioraButton(label: 'Add', icon: Icons.add_rounded, onPressed: openAddForm),
+            trailing: VioraButton(label: 'Add', icon: IconsaxPlusBold.add, onPressed: openAddForm),
           ),
           txAsync.when(
             data: (transactions) {
@@ -52,9 +53,9 @@ class MoneyScreen extends ConsumerWidget {
                     orbColors: [context.neu.domainFinance, context.neu.brand],
                     child: Row(
                       children: [
-                        Expanded(child: VioraStat(label: 'Income (month)', value: income, formatter: fmt.format, icon: Icons.south_west_rounded, iconColor: context.neu.success)),
-                        Expanded(child: VioraStat(label: 'Spent (month)', value: expense, formatter: fmt.format, icon: Icons.north_east_rounded, iconColor: context.neu.danger)),
-                        Expanded(child: VioraStat(label: 'Net (month)', value: income - expense, formatter: fmt.format, icon: Icons.account_balance_wallet_outlined)),
+                        Expanded(child: VioraStat(label: 'Income (month)', value: income, formatter: fmt.format, icon: IconsaxPlusBroken.trend_down, iconColor: context.neu.success)),
+                        Expanded(child: VioraStat(label: 'Spent (month)', value: expense, formatter: fmt.format, icon: IconsaxPlusBroken.trend_up, iconColor: context.neu.danger)),
+                        Expanded(child: VioraStat(label: 'Net (month)', value: income - expense, formatter: fmt.format, icon: IconsaxPlusBroken.wallet)),
                       ],
                     ),
                   ),
@@ -62,7 +63,7 @@ class MoneyScreen extends ConsumerWidget {
                   const VioraSection(title: 'Recent transactions'),
                   if (transactions.isEmpty)
                     VioraEmptyState(
-                      icon: Icons.receipt_long_outlined,
+                      icon: IconsaxPlusBroken.receipt_item,
                       title: 'No transactions yet',
                       message: 'Log your first expense or income to start tracking.',
                       actionLabel: 'Add transaction',
@@ -77,7 +78,7 @@ class MoneyScreen extends ConsumerWidget {
                           child: Row(
                             children: [
                               Icon(
-                                tx.type == TransactionTypes.income ? Icons.south_west_rounded : Icons.north_east_rounded,
+                                tx.type == TransactionTypes.income ? IconsaxPlusBroken.trend_down : IconsaxPlusBroken.trend_up,
                                 color: tx.type == TransactionTypes.income ? context.neu.success : context.neu.danger,
                                 size: 18,
                               ),
@@ -98,7 +99,7 @@ class MoneyScreen extends ConsumerWidget {
                                       color: tx.type == TransactionTypes.income ? context.neu.success : context.neu.textPrimary,
                                     ),
                               ),
-                              VioraIconButton(icon: Icons.delete_outline_rounded, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteTransaction(tx.id)),
+                              VioraIconButton(icon: IconsaxPlusBroken.trash, size: 32, tooltip: 'Delete', onPressed: () => actions.deleteTransaction(tx.id)),
                             ],
                           ),
                         ),

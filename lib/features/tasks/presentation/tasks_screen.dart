@@ -13,6 +13,7 @@ import 'providers/tasks_providers.dart';
 import 'widgets/task_form.dart';
 import 'widgets/task_tile.dart';
 import '../../../core/design_system/theme/viora_neu_theme.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class TasksScreen extends ConsumerWidget {
   const TasksScreen({super.key});
@@ -36,8 +37,8 @@ class TasksScreen extends ConsumerWidget {
             subtitle: 'Everything on your plate',
             trailing: VioraButton(
               label: 'Add',
-              icon: Icons.add_rounded,
-              onPressed: () => showVioraFormSheet(context: context, title: 'New task', icon: Icons.check_circle_outline_rounded, accentColor: context.neu.domainWork, builder: (_) => const TaskForm()),
+              icon: IconsaxPlusBold.add,
+              onPressed: () => showVioraFormSheet(context: context, title: 'New task', icon: IconsaxPlusBroken.tick_circle, accentColor: context.neu.domainWork, builder: (_) => const TaskForm()),
             ),
           ),
           if (allTasks.isNotEmpty) ...[
@@ -50,7 +51,7 @@ class TasksScreen extends ConsumerWidget {
                       label: 'Active',
                       value: activeCount.toDouble(),
                       formatter: (v) => v.toInt().toString(),
-                      icon: Icons.radio_button_unchecked_rounded,
+                      icon: IconsaxPlusBroken.record_circle,
                       metricSize: 24,
                     ),
                   ),
@@ -59,7 +60,7 @@ class TasksScreen extends ConsumerWidget {
                       label: 'Completed',
                       value: completedCount.toDouble(),
                       formatter: (v) => v.toInt().toString(),
-                      icon: Icons.check_circle_outline_rounded,
+                      icon: IconsaxPlusBroken.tick_circle,
                       iconColor: context.neu.success,
                       metricSize: 24,
                     ),
@@ -94,11 +95,11 @@ class TasksScreen extends ConsumerWidget {
             data: (tasks) {
               if (tasks.isEmpty) {
                 return VioraEmptyState(
-                  icon: Icons.check_circle_outline_rounded,
+                  icon: IconsaxPlusBroken.tick_circle,
                   title: 'Nothing here yet',
                   message: 'Add your first task to start planning your day.',
                   actionLabel: 'Add task',
-                  onAction: () => showVioraFormSheet(context: context, title: 'New task', icon: Icons.check_circle_outline_rounded, accentColor: context.neu.domainWork, builder: (_) => const TaskForm()),
+                  onAction: () => showVioraFormSheet(context: context, title: 'New task', icon: IconsaxPlusBroken.tick_circle, accentColor: context.neu.domainWork, builder: (_) => const TaskForm()),
                 );
               }
               return Column(

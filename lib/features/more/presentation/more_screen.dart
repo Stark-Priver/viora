@@ -6,6 +6,7 @@ import '../../../core/design_system/tokens/spacing.dart';
 import '../../../core/design_system/widgets/viora_card.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/design_system/widgets/viora_toast.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// Overflow menu for mobile — the bottom nav only has room for four
 /// destinations plus this one, so everything else (built or not) lives
@@ -39,7 +40,7 @@ class MoreScreen extends StatelessWidget {
                       onTap: () {
                         final item = group.items[i];
                         if (!item.enabled) {
-                          VioraToast.show(context, '${item.label} is on the way — Phase 2+ of the build.', icon: Icons.hourglass_top_rounded);
+                          VioraToast.show(context, '${item.label} is on the way — Phase 2+ of the build.', icon: IconsaxPlusBroken.timer_start);
                           return;
                         }
                         context.go(item.path!);
@@ -88,7 +89,7 @@ class _MoreTile extends StatelessWidget {
                   child: Text('soon', style: Theme.of(context).textTheme.labelSmall),
                 )
               else
-                Icon(Icons.chevron_right_rounded, size: 20, color: neu.textTertiary),
+                Icon(IconsaxPlusBroken.arrow_right_2, size: 20, color: neu.textTertiary),
             ],
           ),
         ),

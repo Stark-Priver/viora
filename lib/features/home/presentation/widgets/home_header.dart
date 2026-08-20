@@ -5,6 +5,7 @@ import '../../../../core/design_system/theme/viora_neu_theme.dart';
 import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_surface.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 String _greeting(DateTime now) {
   final h = now.hour;
@@ -16,10 +17,10 @@ String _greeting(DateTime now) {
 
 IconData _greetingIcon(DateTime now) {
   final h = now.hour;
-  if (h < 5) return Icons.dark_mode_outlined;
-  if (h < 12) return Icons.wb_twilight_rounded;
-  if (h < 17) return Icons.wb_sunny_outlined;
-  return Icons.nights_stay_outlined;
+  if (h < 5) return IconsaxPlusBroken.moon;
+  if (h < 12) return IconsaxPlusBroken.sun_fog;
+  if (h < 17) return IconsaxPlusBroken.sun_1;
+  return IconsaxPlusBroken.moon;
 }
 
 class HomeHeader extends StatefulWidget {

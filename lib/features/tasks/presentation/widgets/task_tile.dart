@@ -7,6 +7,7 @@ import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_chip.dart';
 import '../../../../core/design_system/widgets/viora_completion_check.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 Color _priorityColor(VioraNeuTheme neu, String priority) {
   switch (priority) {
@@ -43,7 +44,7 @@ class TaskTile extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: VioraSpacing.xl),
         margin: const EdgeInsets.only(bottom: VioraSpacing.md),
         decoration: BoxDecoration(color: neu.danger.withValues(alpha: 0.15), borderRadius: BorderRadius.circular(22)),
-        child: Icon(Icons.delete_outline_rounded, color: neu.danger),
+        child: Icon(IconsaxPlusBroken.trash, color: neu.danger),
       ),
       child: Padding(
         padding: const EdgeInsets.only(bottom: VioraSpacing.md),
@@ -77,7 +78,7 @@ class TaskTile extends StatelessWidget {
                         if (task.deadline != null)
                           VioraChip(
                             label: DateFormat('d MMM').format(task.deadline!),
-                            icon: Icons.event_outlined,
+                            icon: IconsaxPlusBroken.calendar,
                           ),
                       ],
                     ),

@@ -8,6 +8,7 @@ import '../../../core/design_system/widgets/viora_chip.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import 'widgets/support_links_card.dart';
 import 'widgets/sync_settings_card.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -36,19 +37,19 @@ class SettingsScreen extends ConsumerWidget {
                   children: [
                     VioraChip(
                       label: 'System',
-                      icon: Icons.brightness_auto_rounded,
+                      icon: IconsaxPlusBroken.toggle_on,
                       selected: themeMode == ThemeMode.system,
                       onTap: () => ref.read(themeModeProvider.notifier).set(ThemeMode.system),
                     ),
                     VioraChip(
                       label: 'Light',
-                      icon: Icons.light_mode_rounded,
+                      icon: IconsaxPlusBroken.sun_1,
                       selected: themeMode == ThemeMode.light,
                       onTap: () => ref.read(themeModeProvider.notifier).set(ThemeMode.light),
                     ),
                     VioraChip(
                       label: 'Dark',
-                      icon: Icons.dark_mode_rounded,
+                      icon: IconsaxPlusBold.moon,
                       selected: themeMode == ThemeMode.dark,
                       onTap: () => ref.read(themeModeProvider.notifier).set(ThemeMode.dark),
                     ),

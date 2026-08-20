@@ -8,6 +8,7 @@ import '../../../../core/design_system/widgets/viora_completion_check.dart';
 import '../../../../core/design_system/widgets/viora_empty_state.dart';
 import '../../../../core/design_system/widgets/viora_section.dart';
 import '../../../tasks/presentation/providers/tasks_providers.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 /// A live preview of what's still open today — not a duplicate of the
 /// Tasks screen, just enough to act on the top few items without leaving
@@ -34,7 +35,7 @@ class TodayTasksCard extends ConsumerWidget {
           ),
           if (active.isEmpty)
             const VioraEmptyState(
-              icon: Icons.check_circle_outline_rounded,
+              icon: IconsaxPlusBroken.tick_circle,
               title: 'All clear',
               message: 'No open tasks right now.',
             )

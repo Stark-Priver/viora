@@ -3,6 +3,7 @@ import '../../../../core/design_system/theme/viora_neu_theme.dart';
 import '../../../../core/design_system/tokens/spacing.dart';
 import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/services/external_links.dart';
+import 'package:iconsax_plus/iconsax_plus.dart';
 
 class SupportLinksCard extends StatelessWidget {
   const SupportLinksCard({super.key});
@@ -32,28 +33,28 @@ class SupportLinksCard extends StatelessWidget {
             ),
           ),
           _LinkRow(
-            icon: Icons.coffee_outlined,
+            icon: IconsaxPlusBroken.coffee,
             iconColor: neu.warning,
             label: 'Buy me a coffee',
             subtitle: 'buymeacoffee.com/depriver',
             onTap: () => ExternalLinks.open(ExternalLinks.buyMeACoffee),
           ),
           _LinkRow(
-            icon: Icons.code_rounded,
+            icon: IconsaxPlusBroken.code,
             iconColor: neu.textPrimary,
             label: 'Follow on GitHub',
             subtitle: 'github.com/Stark-Priver',
             onTap: () => ExternalLinks.open(ExternalLinks.github),
           ),
           _LinkRow(
-            icon: Icons.smart_display_outlined,
+            icon: IconsaxPlusBroken.video_play,
             iconColor: neu.danger,
             label: 'Subscribe on YouTube',
             subtitle: 'youtube.com/@de_priver',
             onTap: () => ExternalLinks.open(ExternalLinks.youtube),
           ),
           _LinkRow(
-            icon: Icons.star_border_rounded,
+            icon: IconsaxPlusBroken.star,
             iconColor: neu.brand,
             label: 'Star the repo',
             subtitle: 'github.com/Stark-Priver/viora',
@@ -106,7 +107,7 @@ class _LinkRow extends StatelessWidget {
                 ],
               ),
             ),
-            Icon(Icons.arrow_outward_rounded, size: 16, color: neu.textTertiary),
+            Icon(IconsaxPlusBroken.export, size: 16, color: neu.textTertiary),
           ],
         ),
       ),
