@@ -44,5 +44,8 @@ class GoalsActions {
     await FeedbackService.instance.tick();
   }
 
-  Future<void> delete(String id) => ref.read(databaseProvider).goalsDao.deleteById(id);
+  Future<void> delete(String id) async {
+    await ref.read(databaseProvider).goalsDao.deleteById(id);
+    await FeedbackService.instance.dismiss();
+  }
 }

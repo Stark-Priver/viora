@@ -82,5 +82,6 @@ class TasksActions {
     final db = ref.read(databaseProvider);
     await db.tasksDao.deleteById(id);
     unawaited(HomeWidgetService.refresh(db));
+    unawaited(FeedbackService.instance.dismiss());
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import '../../../../core/database/database_provider.dart';
 import '../../../../core/database/app_database.dart';
+import '../../../../core/services/feedback_service.dart';
 
 const _uuid = Uuid();
 
@@ -59,5 +60,8 @@ class MoneyActions {
         );
   }
 
-  Future<void> deleteTransaction(String id) => ref.read(databaseProvider).moneyDao.deleteTransaction(id);
+  Future<void> deleteTransaction(String id) async {
+    await ref.read(databaseProvider).moneyDao.deleteTransaction(id);
+    await FeedbackService.instance.dismiss();
+  }
 }

@@ -5,6 +5,7 @@ import '../../../../core/database/database_provider.dart';
 import '../../../../core/database/app_database.dart';
 import '../../../../core/database/tables.dart';
 import '../../../../core/services/notification_service.dart';
+import '../../../../core/services/feedback_service.dart';
 
 const _uuid = Uuid();
 
@@ -121,6 +122,7 @@ class CalendarActions {
       await NotificationService.instance.cancel(event.notificationId!);
     }
     await ref.read(databaseProvider).calendarDao.deleteById(event.id);
+    await FeedbackService.instance.dismiss();
   }
 
   Future<void> deleteSeries(String groupId) async {
@@ -132,5 +134,6 @@ class CalendarActions {
       }
     }
     await dao.deleteByGroupId(groupId);
+    await FeedbackService.instance.dismiss();
   }
 }

@@ -1,6 +1,8 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import '../theme/viora_neu_theme.dart';
 import '../tokens/spacing.dart';
+import '../../services/feedback_service.dart';
 
 /// Small pill for statuses, priorities, domain tags, and filter bars.
 class VioraChip extends StatelessWidget {
@@ -56,7 +58,14 @@ class VioraChip extends StatelessWidget {
     return Material(
       color: Colors.transparent,
       borderRadius: BorderRadius.circular(999),
-      child: InkWell(borderRadius: BorderRadius.circular(999), onTap: onTap, child: chip),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(999),
+        onTap: () {
+          unawaited(FeedbackService.instance.tick());
+          onTap!();
+        },
+        child: chip,
+      ),
     );
   }
 }

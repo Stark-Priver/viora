@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 import '../../../../core/database/database_provider.dart';
 import '../../../../core/database/app_database.dart';
 import '../../../../core/database/tables.dart';
+import '../../../../core/services/feedback_service.dart';
 
 const _uuid = Uuid();
 
@@ -41,7 +42,10 @@ class BusinessActions {
         );
   }
 
-  Future<void> deleteClient(String id) => ref.read(databaseProvider).businessDao.deleteClient(id);
+  Future<void> deleteClient(String id) async {
+    await ref.read(databaseProvider).businessDao.deleteClient(id);
+    await FeedbackService.instance.dismiss();
+  }
 
   Future<void> addProject(BusinessProjectDraft draft) {
     return ref.read(databaseProvider).businessDao.upsertProject(
@@ -60,5 +64,8 @@ class BusinessActions {
     return ref.read(databaseProvider).businessDao.setProjectStatus(id, next);
   }
 
-  Future<void> deleteProject(String id) => ref.read(databaseProvider).businessDao.deleteProject(id);
+  Future<void> deleteProject(String id) async {
+    await ref.read(databaseProvider).businessDao.deleteProject(id);
+    await FeedbackService.instance.dismiss();
+  }
 }

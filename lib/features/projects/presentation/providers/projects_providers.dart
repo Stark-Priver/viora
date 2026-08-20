@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:uuid/uuid.dart';
 import '../../../../core/database/database_provider.dart';
 import '../../../../core/database/app_database.dart';
+import '../../../../core/services/feedback_service.dart';
 
 const _uuid = Uuid();
 
@@ -36,5 +37,8 @@ class ProjectsActions {
 
   Future<void> setStatus(String id, String status) => ref.read(databaseProvider).projectsDao.setStatus(id, status);
 
-  Future<void> delete(String id) => ref.read(databaseProvider).projectsDao.deleteById(id);
+  Future<void> delete(String id) async {
+    await ref.read(databaseProvider).projectsDao.deleteById(id);
+    await FeedbackService.instance.dismiss();
+  }
 }

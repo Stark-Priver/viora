@@ -33,7 +33,10 @@ class HabitsActions {
         );
   }
 
-  Future<void> archive(String id) => ref.read(databaseProvider).habitsDao.archive(id);
+  Future<void> archive(String id) async {
+    await ref.read(databaseProvider).habitsDao.archive(id);
+    await FeedbackService.instance.dismiss();
+  }
 
   Future<void> toggleToday(String habitId) async {
     final dao = ref.read(databaseProvider).habitsDao;
