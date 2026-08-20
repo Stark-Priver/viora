@@ -6,6 +6,7 @@ import '../../../../core/design_system/widgets/viora_card.dart';
 import '../../../../core/design_system/widgets/viora_surface.dart';
 import '../../../../core/design_system/widgets/viora_icon_button.dart';
 import '../../../../core/design_system/widgets/viora_button.dart';
+import '../../../../core/design_system/widgets/viora_progress_ring.dart';
 import '../../../focus/presentation/providers/focus_providers.dart';
 import '../../domain/home_dashboard_data.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -69,15 +70,17 @@ class CurrentFocusCard extends StatelessWidget {
     }
 
     final focus = session!;
+    final progress = focus.plannedMinutes == 0 ? 0.0 : focus.elapsed.inSeconds / (focus.plannedMinutes * 60);
 
     return VioraCard(
       elevation: VioraElevation.raisedHigh,
       orbColors: [neu.success, neu.brand],
       animate: false,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               Container(
                 width: 8,
@@ -92,25 +95,28 @@ class CurrentFocusCard extends StatelessWidget {
             ],
           ),
           const SizedBox(height: VioraSpacing.sm),
-          Text(focus.title, style: textTheme.headlineSmall, maxLines: 1, overflow: TextOverflow.ellipsis),
-          const SizedBox(height: VioraSpacing.lg),
-          Text(_fmtElapsed(focus.elapsed), style: VioraTypography.metric(neu.textPrimary, size: 40)),
-          const SizedBox(height: VioraSpacing.lg),
+          Text(focus.title, style: textTheme.headlineSmall, maxLines: 1, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center),
+          const SizedBox(height: VioraSpacing.xl),
+          VioraProgressRing(
+            progress: progress,
+            size: 148,
+            strokeWidth: 12,
+            center: Text(_fmtElapsed(focus.elapsed), style: VioraTypography.metric(neu.textPrimary, size: 24)),
+          ),
+          const SizedBox(height: VioraSpacing.xl),
           Row(
+            mainAxisSize: MainAxisSize.min,
             children: [
               VioraIconButton(
                 icon: focus.running ? IconsaxPlusBold.pause : IconsaxPlusBold.play,
                 tooltip: focus.running ? 'Pause' : 'Resume',
                 onPressed: onTogglePause,
               ),
-              const SizedBox(width: VioraSpacing.sm),
+              const SizedBox(width: VioraSpacing.md),
               VioraIconButton(icon: IconsaxPlusBold.stop_circle, tooltip: 'Stop', onPressed: onStop),
-              if (nextEvent != null) ...[
-                const SizedBox(width: VioraSpacing.md),
-                Expanded(child: Align(alignment: Alignment.centerRight, child: nextEventLine())),
-              ],
             ],
           ),
+          if (nextEvent != null) ...[const SizedBox(height: VioraSpacing.lg), nextEventLine()],
         ],
       ),
     );
