@@ -25,19 +25,30 @@ import '../../features/communications/presentation/communications_screen.dart';
 import '../../features/reports/presentation/reports_screen.dart';
 import '../../features/ai_coach/presentation/ai_coach_screen.dart';
 
+// Deliberately a plain Provider that never watches anything that changes
+// during normal use (theme, auth, etc.) — GoRouter's identity must stay
+// stable for the app's lifetime. Watching theme here used to rebuild this
+// provider (and therefore construct a brand-new GoRouter, which always
+// resets to initialLocation) on every theme toggle, silently bouncing the
+// user back to Home. Theme is read locally in the ShellRoute's builder via
+// a Consumer instead, so only the shell — not the router — rebuilds.
 final routerProvider = Provider<GoRouter>((ref) {
   return GoRouter(
     initialLocation: '/',
     routes: [
       ShellRoute(
         builder: (context, state, child) {
-          final themeMode = ref.watch(themeModeProvider);
-          return VioraAppShell(
-            currentPath: state.matchedLocation,
-            onNavigate: (path) => context.go(path),
-            themeMode: themeMode,
-            onToggleTheme: () => ref.read(themeModeProvider.notifier).toggle(),
-            child: child,
+          return Consumer(
+            builder: (context, ref, _) {
+              final themeMode = ref.watch(themeModeProvider);
+              return VioraAppShell(
+                currentPath: state.matchedLocation,
+                onNavigate: (path) => context.go(path),
+                themeMode: themeMode,
+                onToggleTheme: () => ref.read(themeModeProvider.notifier).toggle(),
+                child: child,
+              );
+            },
           );
         },
         routes: [
