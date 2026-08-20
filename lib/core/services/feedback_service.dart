@@ -11,6 +11,21 @@ class FeedbackService {
 
   final _player = AudioPlayer();
 
+  /// Settings-controlled — see `SoundSettingsController`. Haptics are
+  /// unaffected by this; it only gates the audio cues.
+  bool soundEnabled = true;
+
+  Future<void> _play(String asset, double volume) async {
+    if (!soundEnabled) return;
+    try {
+      await _player.stop();
+      await _player.play(AssetSource(asset), volume: volume);
+    } catch (_) {
+      // Best-effort — a missing audio device or muted platform channel
+      // should never block the action that triggered feedback.
+    }
+  }
+
   Future<void> celebrate() async {
     try {
       await HapticFeedback.mediumImpact();
@@ -18,13 +33,7 @@ class FeedbackService {
       // Haptics aren't available on every platform (web, desktop) — never
       // let that block the sound or the action that triggered feedback.
     }
-    try {
-      await _player.stop();
-      await _player.play(AssetSource('sounds/success.wav'), volume: 0.6);
-    } catch (_) {
-      // Best-effort — a missing audio device or muted platform channel
-      // should never block the completion action itself.
-    }
+    await _play('sounds/success.wav', 0.6);
   }
 
   Future<void> tick() async {
@@ -33,12 +42,7 @@ class FeedbackService {
     } catch (_) {
       // See celebrate() above.
     }
-    try {
-      await _player.stop();
-      await _player.play(AssetSource('sounds/tap.wav'), volume: 0.4);
-    } catch (_) {
-      // See celebrate() above.
-    }
+    await _play('sounds/tap.wav', 0.4);
   }
 
   /// Feedback for a destructive/negative action (delete, dismiss) — a
@@ -50,11 +54,6 @@ class FeedbackService {
     } catch (_) {
       // See celebrate() above.
     }
-    try {
-      await _player.stop();
-      await _player.play(AssetSource('sounds/dismiss.wav'), volume: 0.5);
-    } catch (_) {
-      // See celebrate() above.
-    }
+    await _play('sounds/dismiss.wav', 0.5);
   }
 }

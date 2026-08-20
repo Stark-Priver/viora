@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'core/design_system/theme/viora_theme.dart';
 import 'core/design_system/theme/theme_controller.dart';
 import 'core/routing/app_router.dart';
+import 'core/services/sound_settings_controller.dart';
 import 'core/sync/local_backup.dart';
 import 'core/sync/sync_config.dart';
 
@@ -16,6 +17,10 @@ Future<void> main() async {
   if (!kIsWeb) {
     await LocalBackup.applyPendingRestoreIfAny();
   }
+
+  // Must run before any completion/delete action can fire, so a disabled
+  // preference from a previous session is honored from the very first cue.
+  await loadSoundEffectsPreference();
 
   if (SyncConfig.isSupabaseConfigured) {
     await Supabase.initialize(url: SyncConfig.supabaseUrl, publishableKey: SyncConfig.supabaseAnonKey);
