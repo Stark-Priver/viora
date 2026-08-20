@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import '../tokens/motion.dart';
 import '../tokens/spacing.dart';
 import 'viora_surface.dart';
 import 'viora_orb_field.dart';
@@ -20,6 +22,7 @@ class VioraCard extends StatelessWidget {
     this.onTap,
     this.color,
     this.orbColors,
+    this.animate = true,
   });
 
   final Widget child;
@@ -29,6 +32,11 @@ class VioraCard extends StatelessWidget {
   final VoidCallback? onTap;
   final Color? color;
   final List<Color>? orbColors;
+
+  /// Plays a one-time fade/slide entrance when this card first mounts.
+  /// Turn off for cards that get rebuilt on a fast, live-updating cadence
+  /// (e.g. a running timer) where re-mounting would replay it.
+  final bool animate;
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +50,7 @@ class VioraCard extends StatelessWidget {
             ],
           );
 
-    return VioraSurface(
+    final surface = VioraSurface(
       elevation: elevation,
       borderRadius: borderRadius,
       padding: EdgeInsets.zero,
@@ -50,5 +58,12 @@ class VioraCard extends StatelessWidget {
       color: color,
       child: content,
     );
+
+    if (!animate) return surface;
+
+    return surface
+        .animate()
+        .fadeIn(duration: VioraMotion.medium, curve: VioraMotion.standard)
+        .slideY(begin: 0.06, end: 0, duration: VioraMotion.medium, curve: VioraMotion.standard);
   }
 }
