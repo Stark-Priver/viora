@@ -63,6 +63,11 @@ nothing on the Home dashboard is sample data anymore.
 - **Notifications & feedback** — local reminders for calendar events, an
   audio + animation cue on task completion, and an Android home-screen
   widget.
+- **Data & Sync** — local-only by default; optionally back up and restore
+  the database via Google Drive or a Supabase account, chosen right in
+  Settings, no developer tools required. See
+  [docs/SYNC_SETUP.md](docs/SYNC_SETUP.md) if you're the one deploying a
+  build and want to turn a backend on.
 
 Modules not yet built (AI Coach, Communications, and a couple of others)
 still appear in the nav, grouped correctly, but are marked "coming soon" —
@@ -147,9 +152,6 @@ lib/
 
 ## Roadmap
 
-- **Bring your own sync** — an in-app, no-setup-required option to keep
-  data fully local (default) or link a Google Drive / Supabase account for
-  cross-device sync, aimed at non-developers.
 - Auth/onboarding flow.
 - Android/Windows/Linux telemetry agents.
 - Remaining life modules: AI Coach, Communications, Relationships, Location.
