@@ -16,5 +16,17 @@
 # home_widget (Android home-screen widget bridge).
 -keep class es.antonborri.home_widget.** { *; }
 
+# AndroidX WorkManager (pulled in transitively by flutter_local_notifications
+# for scheduled reminders) uses Room internally, which generates DAO/database
+# implementation classes (e.g. WorkDatabase_Impl) that R8 was stripping —
+# crashed on every launch with "Failed to create an instance of
+# androidx.work.impl.WorkDatabase" before this rule was added.
+-keep class androidx.work.** { *; }
+-dontwarn androidx.work.**
+-keep class androidx.room.** { *; }
+-keep class * extends androidx.room.RoomDatabase { *; }
+-keep @androidx.room.Entity class * { *; }
+-dontwarn androidx.room.**
+
 # Reflection metadata some plugins rely on for JSON (de)serialization.
 -keepattributes Signature,*Annotation*,EnclosingMethod,InnerClasses
