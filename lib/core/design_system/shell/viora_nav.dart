@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
 
 class VioraNavItem {
-  const VioraNavItem({required this.label, required this.icon, this.path});
+  const VioraNavItem({required this.label, required this.icon, this.path, this.isCentral = false});
 
   final String label;
   final IconData icon;
@@ -11,6 +11,10 @@ class VioraNavItem {
   /// unshipped items still render in the shell (so the nav reads as a
   /// finished product) but tapping them shows a "coming soon" toast.
   final String? path;
+
+  /// Renders as the raised circular action in the middle of the mobile
+  /// bottom nav instead of a regular tab — see [vioraMobileNavItems].
+  final bool isCentral;
 
   bool get enabled => path != null;
 }
@@ -62,7 +66,7 @@ const vioraNavGroups = <VioraNavGroup>[
 const vioraMobileNavItems = <VioraNavItem>[
   VioraNavItem(label: 'Home', icon: IconsaxPlusBold.grid_1, path: '/'),
   VioraNavItem(label: 'Tasks', icon: IconsaxPlusBroken.tick_circle, path: '/tasks'),
-  VioraNavItem(label: 'Focus', icon: IconsaxPlusBroken.scan, path: '/focus'),
+  VioraNavItem(label: 'Focus', icon: IconsaxPlusBold.scan, path: '/focus', isCentral: true),
   VioraNavItem(label: 'Money', icon: IconsaxPlusBroken.wallet, path: '/money'),
   VioraNavItem(label: 'More', icon: IconsaxPlusBroken.grid_1, path: '/more'),
 ];

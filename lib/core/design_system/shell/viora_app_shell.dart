@@ -313,12 +313,13 @@ class _MobileShell extends StatelessWidget {
         bottom: false,
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.sm, VioraSpacing.lg, 0),
+            Container(
+              padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.md, VioraSpacing.lg, VioraSpacing.md),
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: neu.divider, width: 1))),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const VioraWordmark(fontSize: 18),
+                  const VioraWordmark(fontSize: 19),
                   _TopBarActions(themeMode: themeMode, onToggleTheme: onToggleTheme),
                 ],
               ),
@@ -330,24 +331,81 @@ class _MobileShell extends StatelessWidget {
       bottomNavigationBar: SafeArea(
         child: Padding(
           padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, 0, VioraSpacing.lg, VioraSpacing.md),
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: VioraSpacing.sm, vertical: VioraSpacing.sm),
-            decoration: BoxDecoration(
-              color: neu.surface,
-              borderRadius: BorderRadius.circular(22),
-              boxShadow: [
-                BoxShadow(color: neu.darkShadow.withValues(alpha: 0.5), offset: const Offset(0, 6), blurRadius: 16),
-                BoxShadow(color: neu.lightShadow.withValues(alpha: 0.7), offset: const Offset(0, -3), blurRadius: 10),
-              ],
-            ),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+          child: SizedBox(
+            height: 76,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.bottomCenter,
               children: [
+                Container(
+                  height: 64,
+                  padding: const EdgeInsets.symmetric(horizontal: VioraSpacing.sm),
+                  decoration: BoxDecoration(
+                    color: neu.surface,
+                    borderRadius: BorderRadius.circular(22),
+                    boxShadow: [
+                      BoxShadow(color: neu.darkShadow.withValues(alpha: 0.5), offset: const Offset(0, 6), blurRadius: 16),
+                      BoxShadow(color: neu.lightShadow.withValues(alpha: 0.7), offset: const Offset(0, -3), blurRadius: 10),
+                    ],
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      for (final item in vioraMobileNavItems)
+                        if (item.isCentral)
+                          const SizedBox(width: 56)
+                        else
+                          _BottomNavItem(item: item, selected: item.path == selected, onTap: () => onSelect(item)),
+                    ],
+                  ),
+                ),
                 for (final item in vioraMobileNavItems)
-                  _BottomNavItem(item: item, selected: item.path == selected, onTap: () => onSelect(item)),
+                  if (item.isCentral)
+                    _CentralNavItem(item: item, selected: item.path == selected, onTap: () => onSelect(item)),
               ],
             ),
           ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The raised circular action in the middle of the bottom nav — floats
+/// above the bar, thumb-reachable from either side, for the one
+/// destination worth a beat of extra visual weight.
+class _CentralNavItem extends StatelessWidget {
+  const _CentralNavItem({required this.item, required this.selected, required this.onTap});
+
+  final VioraNavItem item;
+  final bool selected;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final neu = context.neu;
+    return Material(
+      color: Colors.transparent,
+      shape: const CircleBorder(),
+      child: InkWell(
+        onTap: onTap,
+        customBorder: const CircleBorder(),
+        child: Container(
+          width: 60,
+          height: 60,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [neu.brand, neu.brand.withValues(alpha: 0.85)],
+            ),
+            border: Border.all(color: neu.background, width: 4),
+            boxShadow: [
+              BoxShadow(color: neu.brand.withValues(alpha: 0.45), offset: const Offset(0, 6), blurRadius: 16),
+            ],
+          ),
+          child: Icon(item.icon, size: 26, color: Colors.white),
         ),
       ),
     );
