@@ -26,4 +26,6 @@ class FocusDao extends DatabaseAccessor<AppDatabase> with _$FocusDaoMixin {
       ),
     );
   }
+
+  Future<void> deleteById(String id) => (delete(focusSessions)..where((f) => f.id.equals(id))).go();
 }

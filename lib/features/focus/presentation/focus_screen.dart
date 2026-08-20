@@ -72,6 +72,12 @@ class FocusScreen extends ConsumerWidget {
                               s.focusedMinutes != null ? '${s.focusedMinutes}m' : 'active',
                               style: Theme.of(context).textTheme.titleMedium,
                             ),
+                            VioraIconButton(
+                              icon: IconsaxPlusBroken.trash,
+                              size: 32,
+                              tooltip: 'Delete',
+                              onPressed: () => ref.read(focusSessionProvider.notifier).deleteSession(s.id),
+                            ),
                           ],
                         ),
                       ),
