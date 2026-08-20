@@ -6,6 +6,8 @@ import '../../../core/design_system/tokens/spacing.dart';
 import '../../../core/design_system/widgets/viora_card.dart';
 import '../../../core/design_system/widgets/viora_chip.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
+import 'widgets/support_links_card.dart';
+import 'widgets/sync_settings_card.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -56,6 +58,10 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: VioraSpacing.lg),
+          const SyncSettingsCard(),
+          const SizedBox(height: VioraSpacing.lg),
+          const SupportLinksCard(),
+          const SizedBox(height: VioraSpacing.lg),
           VioraCard(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,8 +69,6 @@ class SettingsScreen extends ConsumerWidget {
                 Text('About', style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: VioraSpacing.sm),
                 Text('Viora 0.1.0 — Personal Life Operating System', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary)),
-                const SizedBox(height: VioraSpacing.xs),
-                Text('Data is stored locally on this device. Cloud sync is not yet connected.', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary)),
               ],
             ),
           ),

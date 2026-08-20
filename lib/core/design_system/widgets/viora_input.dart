@@ -14,6 +14,7 @@ class VioraInput extends StatelessWidget {
     this.keyboardType,
     this.prefixText,
     this.autofocus = false,
+    this.obscureText = false,
   });
 
   final TextEditingController? controller;
@@ -23,6 +24,7 @@ class VioraInput extends StatelessWidget {
   final TextInputType? keyboardType;
   final String? prefixText;
   final bool autofocus;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +47,7 @@ class VioraInput extends StatelessWidget {
             maxLines: maxLines,
             keyboardType: keyboardType,
             autofocus: autofocus,
+            obscureText: obscureText,
             style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: neu.textPrimary),
             cursorColor: neu.brand,
             decoration: InputDecoration(
