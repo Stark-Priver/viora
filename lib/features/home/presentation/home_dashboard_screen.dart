@@ -46,7 +46,7 @@ class HomeDashboardScreen extends ConsumerWidget {
             VioraSpacing.xl6,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const HomeHeader(),
               const SizedBox(height: gap),

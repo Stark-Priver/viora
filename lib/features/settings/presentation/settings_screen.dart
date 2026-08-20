@@ -6,6 +6,7 @@ import '../../../core/design_system/tokens/spacing.dart';
 import '../../../core/design_system/widgets/viora_card.dart';
 import '../../../core/design_system/widgets/viora_chip.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
+import '../../../core/services/sound_settings_controller.dart';
 import 'widgets/support_links_card.dart';
 import 'widgets/sync_settings_card.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -16,12 +17,13 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final themeMode = ref.watch(themeModeProvider);
+    final soundEnabled = ref.watch(soundEffectsEnabledProvider);
     final neu = context.neu;
 
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const VioraSection(title: 'Settings'),
           VioraCard(
@@ -52,6 +54,38 @@ class SettingsScreen extends ConsumerWidget {
                       icon: IconsaxPlusBold.moon,
                       selected: themeMode == ThemeMode.dark,
                       onTap: () => ref.read(themeModeProvider.notifier).set(ThemeMode.dark),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: VioraSpacing.lg),
+          VioraCard(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('Sound & Haptics', style: Theme.of(context).textTheme.titleMedium),
+                const SizedBox(height: VioraSpacing.xs),
+                Text(
+                  'The tap, completion, and delete cues heard around the app.',
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary),
+                ),
+                const SizedBox(height: VioraSpacing.lg),
+                Wrap(
+                  spacing: VioraSpacing.sm,
+                  children: [
+                    VioraChip(
+                      label: 'Sound effects on',
+                      icon: IconsaxPlusBold.notification,
+                      selected: soundEnabled,
+                      onTap: () => ref.read(soundEffectsEnabledProvider.notifier).set(true),
+                    ),
+                    VioraChip(
+                      label: 'Off',
+                      icon: IconsaxPlusBroken.notification,
+                      selected: !soundEnabled,
+                      onTap: () => ref.read(soundEffectsEnabledProvider.notifier).set(false),
                     ),
                   ],
                 ),

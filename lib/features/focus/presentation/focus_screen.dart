@@ -34,7 +34,7 @@ class FocusScreen extends ConsumerWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const VioraSection(title: 'Focus', subtitle: 'One task, uninterrupted'),
           session == null ? const _StartFocusCard() : _ActiveFocusCard(session: session),

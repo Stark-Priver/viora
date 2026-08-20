@@ -22,7 +22,7 @@ class MoreScreen extends StatelessWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const VioraSection(title: 'More', subtitle: 'Everything else Viora tracks'),
           for (final group in vioraNavGroups) ...[

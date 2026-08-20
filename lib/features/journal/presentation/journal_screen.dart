@@ -64,7 +64,7 @@ class _JournalScreenState extends ConsumerState<JournalScreen> {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const VioraSection(title: 'Journal', subtitle: 'A daily record, in your own words'),
           VioraCard(

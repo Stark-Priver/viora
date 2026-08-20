@@ -66,7 +66,7 @@ class _HealthScreenState extends ConsumerState<HealthScreen> {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const VioraSection(title: 'Health', subtitle: 'Sleep, weight, water, mood'),
           VioraCard(

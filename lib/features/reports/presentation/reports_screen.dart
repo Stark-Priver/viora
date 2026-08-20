@@ -73,7 +73,7 @@ class ReportsScreen extends ConsumerWidget {
     return SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.lg, VioraSpacing.xl6),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           VioraSection(title: 'Reports', subtitle: '${DateFormat('d MMM').format(weekStart)} – ${DateFormat('d MMM').format(weekEnd.subtract(const Duration(days: 1)))}'),
           VioraCard(
