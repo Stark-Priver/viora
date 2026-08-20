@@ -26,7 +26,8 @@ dependencies:
   http: ^1.6.0
   google_sign_in: ^6.2.2
   url_launcher: ^6.3.2
-
+  iconsax_plus: ^1.0.0
+  flutter_animate: ^4.5.2
 dev_dependencies:
   flutter_test:
     sdk: flutter
