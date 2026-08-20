@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../theme/viora_neu_theme.dart';
 import '../tokens/spacing.dart';
 import '../tokens/breakpoints.dart';
 import '../widgets/viora_icon_button.dart';
 import '../widgets/viora_toast.dart';
+import 'bottom_nav_controller.dart';
 import 'viora_nav.dart';
 import 'viora_wordmark.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -288,7 +290,7 @@ class _TabletShell extends StatelessWidget {
   }
 }
 
-class _MobileShell extends StatelessWidget {
+class _MobileShell extends ConsumerWidget {
   const _MobileShell({
     required this.child,
     required this.selected,
@@ -304,8 +306,10 @@ class _MobileShell extends StatelessWidget {
   final VoidCallback onToggleTheme;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final neu = context.neu;
+    final navItems = ref.watch(bottomNavItemsProvider);
+    final centralIndex = navItems.length ~/ 2;
 
     return Scaffold(
       backgroundColor: neu.background,
@@ -351,17 +355,20 @@ class _MobileShell extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      for (final item in vioraMobileNavItems)
-                        if (item.isCentral)
+                      for (var i = 0; i < navItems.length; i++)
+                        if (i == centralIndex)
                           const SizedBox(width: 56)
                         else
-                          _BottomNavItem(item: item, selected: item.path == selected, onTap: () => onSelect(item)),
+                          _BottomNavItem(item: navItems[i], selected: navItems[i].path == selected, onTap: () => onSelect(navItems[i])),
                     ],
                   ),
                 ),
-                for (final item in vioraMobileNavItems)
-                  if (item.isCentral)
-                    _CentralNavItem(item: item, selected: item.path == selected, onTap: () => onSelect(item)),
+                if (navItems.isNotEmpty)
+                  _CentralNavItem(
+                    item: navItems[centralIndex],
+                    selected: navItems[centralIndex].path == selected,
+                    onTap: () => onSelect(navItems[centralIndex]),
+                  ),
               ],
             ),
           ),

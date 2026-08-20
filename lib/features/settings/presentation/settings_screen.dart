@@ -7,6 +7,8 @@ import '../../../core/design_system/widgets/viora_card.dart';
 import '../../../core/design_system/widgets/viora_chip.dart';
 import '../../../core/design_system/widgets/viora_section.dart';
 import '../../../core/services/sound_settings_controller.dart';
+import '../../../core/services/external_links.dart';
+import 'widgets/bottom_nav_settings_card.dart';
 import 'widgets/support_links_card.dart';
 import 'widgets/sync_settings_card.dart';
 import 'package:iconsax_plus/iconsax_plus.dart';
@@ -93,6 +95,8 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: VioraSpacing.lg),
+          const BottomNavSettingsCard(),
+          const SizedBox(height: VioraSpacing.lg),
           const SyncSettingsCard(),
           const SizedBox(height: VioraSpacing.lg),
           const SupportLinksCard(),
@@ -104,6 +108,27 @@ class SettingsScreen extends ConsumerWidget {
                 Text('About', style: Theme.of(context).textTheme.titleMedium),
                 const SizedBox(height: VioraSpacing.sm),
                 Text('Viora 0.1.0 — Personal Life Operating System', style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary)),
+                const SizedBox(height: VioraSpacing.md),
+                Row(
+                  children: [
+                    Icon(IconsaxPlusBroken.code, size: 15, color: neu.textTertiary),
+                    const SizedBox(width: VioraSpacing.xs),
+                    Expanded(
+                      child: Text(
+                        'Open source, built by Stark-Priver. The full source is public on GitHub — read it, fork it, or send a pull request.',
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.textSecondary),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: VioraSpacing.sm),
+                InkWell(
+                  onTap: () => ExternalLinks.open(ExternalLinks.repo),
+                  child: Text(
+                    'github.com/Stark-Priver/viora',
+                    style: Theme.of(context).textTheme.bodySmall?.copyWith(color: neu.brand, fontWeight: FontWeight.w600),
+                  ),
+                ),
               ],
             ),
           ),
