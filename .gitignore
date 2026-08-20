@@ -1,0 +1,22 @@
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+*.lock
+!pubspec.lock
+
+# IDE
+.idea/
+.vscode/
+
+# Platform build outputs only — platform project folders themselves are committed.
+**/android/app/build/
+**/ios/Flutter/Flutter.podspec
+**/linux/flutter/ephemeral/
+**/windows/flutter/ephemeral/
+**/macos/Flutter/ephemeral/
+.claude/
+*.iml
