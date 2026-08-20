@@ -10,8 +10,9 @@ Plan life → live life → capture reality → understand behavior → review �
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-02569B?logo=flutter&logoColor=white)](https://flutter.dev)
 [![Platforms](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web-informational)](#running)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Buy Me a Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-donate-FFDD00?logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/depriver)
 
-[Follow on GitHub](https://github.com/Stark-Priver) · [YouTube](https://www.youtube.com/@de_priver)
+[Follow on GitHub](https://github.com/Stark-Priver) · [YouTube](https://www.youtube.com/@de_priver) · [Buy Me a Coffee](https://buymeacoffee.com/depriver)
 
 </div>
 
@@ -168,5 +169,6 @@ If Viora is useful to you, consider supporting its development, following
 along, or subscribing for build videos:
 
 - ⭐ Star this repo
+- ☕ [Buy me a coffee](https://buymeacoffee.com/depriver)
 - 🐙 [github.com/Stark-Priver](https://github.com/Stark-Priver)
 - ▶️ [YouTube — @de_priver](https://www.youtube.com/@de_priver)
